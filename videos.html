@@ -1,0 +1,941 @@
+<html lang="tr"><head>
+    <title>Videolar | Social Theme</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1">
+    <link rel="stylesheet" href="assets/css/color.css?v=1.0.4">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.0.6">
+    <link rel="stylesheet" href="assets/css/introjs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/simplelineicons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><style>.swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;overflow-y:hidden;background:#fff;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{flex-direction:row;padding:0}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:static;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;padding:0;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{flex-basis:auto!important;width:auto;height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-no-transition{transition:none!important}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-popup{display:none;position:relative;box-sizing:border-box;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:flex;flex-direction:column;align-items:center;padding:0 1.8em}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;flex-wrap:wrap;align-items:center;justify-content:center;width:100%;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent!important;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:"";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 1px #fff,0 0 0 3px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;height:.25em;overflow:hidden;border-bottom-right-radius:.3125em;border-bottom-left-radius:.3125em}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;z-index:2;top:0;right:0;align-items:center;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;transition:color .1s ease-out;border:none;border-radius:0;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close::-moz-focus-inner{border:0}.swal2-content{z-index:1;justify-content:center;margin:0;padding:0 1.6em;color:#545454;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder,.swal2-input::-ms-input-placeholder,.swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:"!";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;border:.25em solid transparent;border-radius:50%;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent!important}body.swal2-no-backdrop .swal2-container>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-container.swal2-top{top:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-container.swal2-top-left,body.swal2-no-backdrop .swal2-container.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-container.swal2-top-end,body.swal2-no-backdrop .swal2-container.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-container.swal2-center{top:50%;left:50%;transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-container.swal2-center-left,body.swal2-no-backdrop .swal2-container.swal2-center-start{top:50%;left:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-container.swal2-center-end,body.swal2-no-backdrop .swal2-container.swal2-center-right{top:50%;right:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-container.swal2-bottom{bottom:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-container.swal2-bottom-left,body.swal2-no-backdrop .swal2-container.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-container.swal2-bottom-end,body.swal2-no-backdrop .swal2-container.swal2-bottom-right{right:0;bottom:0}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}</style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+    <script>var ajax_url = 'ajax';</script>
+    <link rel="stylesheet" href="assets/plugins/owl-carousel/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/plugins/owl-carousel/assets/owlcarousel/assets/owl.theme.default.min.css">
+    <script src="assets/plugins/owl-carousel/assets/vendors/jquery.min.js"></script>
+    <script src="assets/plugins/owl-carousel/assets/owlcarousel/owl.carousel.js"></script>
+</head>
+<body class="dark">
+<section class="navbar fixed-top">
+    <div class="container-fluid">
+        <div class="col-12 search-box">
+            <div class="row d-none d-md-flex">
+                <div class="col-3">
+                    <a href="index.html" class="btn-home"><img src="assets/images/logo.png"></a>
+                </div>
+                <div class="col-5">
+                    <div class="search-bar header_search_form">
+                        <i class="icon-magnifier icons"></i>
+                        <input autocomplete="off" name="s" type="text" placeholder="Ara">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <ul class="user-menu">
+                        <li><a href="#"><i class="icon-present icons" title="Çekiliş"><span class="notification-dot"></span></i></a></li>
+                        <li><a href="videos.html"><i class="icon-control-play icons" data-placement="top" data-toggle="tooltip" title="Video topluluğu"></i></a></li>
+                        <li><a data-toggle="modal" data-target=".notification-modal" onclick="notificationReset();"><i class="icon-bell icons" data-placement="top" data-toggle="tooltip" title="Bildirimler"></i>
+                        </a></li>
+                        <li><a href="upload.html"><i class="icon-camrecorder icons" data-placement="top" data-toggle="tooltip" title="Sen de anlat"></i></a></li>
+                        <li><a data-toggle="modal" data-target=".bd-user-modal-sm">
+                            <img src="assets/images/user/avatar.png" id="avatarPreviewNavbar">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="mobile-bar" class="row d-md-none"><div class="mobile-without-search"><div class="col-5"><a href="index.html" class="btn-home"><img src="assets/images/logo.png"></a></div> <div class="col-7"><ul class="user-menu"><li><a href="#"><i title="Çekiliş" class="icon-present icons"><span class="notification-dot"></span></i></a></li> <li><a href="upload"><i class="icon-camrecorder icons"></i></a></li> <li><a class="mobile-search-open"><i class="icon-magnifier icons"></i></a></li></ul></div></div> <div class="mobile-with-search"><div class="search-bar header_search_form"><i class="icon-magnifier icons"></i> <input autocomplete="off" name="s" type="text" placeholder="Ara" id="mobile-search-input"></div> <a><i class="icon-close icons"></i></a></div></div>
+            <div class="search-result-box col-12 col-md-6">
+                <ul class="list-group liveresult" style="display: none;"></ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div id="swipe-sidebar" class="swipe-sidebar d-block" v-bind:class="{ active: showSwipeSidebar }" v-show="showSwipeSidebar">
+        <a class="swipe-sidebar-btn" v-on:click="showSwipeSidebar = !showSwipeSidebar"><i class="icon-menu icons"></i> </a>
+        <div class="scroll-content">
+            <input type="text" id="swipe-sidebar-search-box" onkeyup="swipeSidebarSearch()" placeholder="Üniversite ara...">
+            <ul id="swipe-sidebar-list">
+                <li><a href="university.html" title="Ondokuz Mayıs Üniversitesi"><img src="assets/images/logos/omu.png" loading="lazy" title="Ondokuz Mayıs Üniversitesi" alt="Ondokuz Mayıs Üniversitesi"><span>Ondokuz Mayıs Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Yıldız Teknik Üniversitesi"><img src="assets/images/logos/yildiz.png" loading="lazy" title="Yıldız Teknik Üniversitesi" alt="Yıldız Teknik Üniversitesi"><span>Yıldız Teknik Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Burdur Mehmet Akif Ersoy Üniversitesi"><img src="assets/images/logos/mehmetakif.png" loading="lazy" title="Burdur Mehmet Akif Ersoy Üniversitesi" alt="Burdur Mehmet Akif Ersoy Üniversitesi"><span>Burdur Mehmet Akif Ersoy Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Pamukkale Üniversitesi"><img src="assets/images/logos/pau.png" loading="lazy" title="Pamukkale Üniversitesi" alt="Pamukkale Üniversitesi"><span>Pamukkale Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Doğuş Üniversitesi"><img src="assets/images/logos/dogus.png" loading="lazy" title="Doğuş Üniversitesi" alt="Doğuş Üniversitesi"><span>Doğuş Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Erciyes Üniversitesi"><img src="assets/images/logos/erciyes.png" loading="lazy" title="Erciyes Üniversitesi" alt="Erciyes Üniversitesi"><span>Erciyes Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Kocaeli Üniversitesi"><img src="assets/images/logos/kocaeli.png" loading="lazy" title="Kocaeli Üniversitesi" alt="Kocaeli Üniversitesi"><span>Kocaeli Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Bolu Abant Izzet Baysal Üniversitesi"><img src="assets/images/logos/ibu.png" loading="lazy" title="Bolu Abant Izzet Baysal Üniversitesi" alt="Bolu Abant Izzet Baysal Üniversitesi"><span>Bolu Abant Izzet Baysal Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Zonguldak Bülent Ecevit Üniversitesi"><img src="assets/images/logos/beun.png" loading="lazy" title="Zonguldak Bülent Ecevit Üniversitesi" alt="Zonguldak Bülent Ecevit Üniversitesi"><span>Zonguldak Bülent Ecevit Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Ordu Üniversitesi"><img src="assets/images/logos/odu.png" loading="lazy" title="Ordu Üniversitesi" alt="Ordu Üniversitesi"><span>Ordu Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Çanakkale Onsekiz Mart Üniversitesi"><img src="assets/images/logos/comu.png" loading="lazy" title="Çanakkale Onsekiz Mart Üniversitesi" alt="Çanakkale Onsekiz Mart Üniversitesi"><span>Çanakkale Onsekiz Mart Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Bilecik Şeyh Edebali Üniversitesi"><img src="assets/images/logos/bilecik.png" loading="lazy" title="Bilecik Şeyh Edebali Üniversitesi" alt="Bilecik Şeyh Edebali Üniversitesi"><span>Bilecik Şeyh Edebali Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Bandırma Onyedi Eylül Üniversitesi"><img src="assets/images/logos/bandirma.png" loading="lazy" title="Bandırma Onyedi Eylül Üniversitesi" alt="Bandırma Onyedi Eylül Üniversitesi"><span>Bandırma Onyedi Eylül Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Atatürk Üniversitesi"><img src="assets/images/logos/atauni.png" loading="lazy" title="Atatürk Üniversitesi" alt="Atatürk Üniversitesi"><span>Atatürk Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Istanbul Üniversitesi"><img src="assets/images/logos/istanbul.png" loading="lazy" title="Istanbul Üniversitesi" alt="Istanbul Üniversitesi"><span>Istanbul Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Kırşehir Ahi Evran Üniversitesi"><img src="assets/images/logos/ahievran.png" loading="lazy" title="Kırşehir Ahi Evran Üniversitesi" alt="Kırşehir Ahi Evran Üniversitesi"><span>Kırşehir Ahi Evran Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Dokuz Eylül Üniversitesi"><img src="assets/images/logos/deu.png" loading="lazy" title="Dokuz Eylül Üniversitesi" alt="Dokuz Eylül Üniversitesi"><span>Dokuz Eylül Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Süleyman Demirel Üniversitesi"><img src="assets/images/logos/sdu.png" loading="lazy" title="Süleyman Demirel Üniversitesi" alt="Süleyman Demirel Üniversitesi"><span>Süleyman Demirel Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Marmara Üniversitesi"><img src="assets/images/logos/marmara.png" loading="lazy" title="Marmara Üniversitesi" alt="Marmara Üniversitesi"><span>Marmara Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Trakya Üniversitesi"><img src="assets/images/logos/trakya.png" loading="lazy" title="Trakya Üniversitesi" alt="Trakya Üniversitesi"><span>Trakya Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Istanbul Aydın Üniversitesi"><img src="assets/images/logos/aydin.png" loading="lazy" title="Istanbul Aydın Üniversitesi" alt="Istanbul Aydın Üniversitesi"><span>Istanbul Aydın Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Bursa Uludağ Üniversitesi"><img src="assets/images/logos/uludag.png" loading="lazy" title="Bursa Uludağ Üniversitesi" alt="Bursa Uludağ Üniversitesi"><span>Bursa Uludağ Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Tokat Gaziosmanpaşa Üniversitesi"><img src="assets/images/logos/gop.png" loading="lazy" title="Tokat Gaziosmanpaşa Üniversitesi" alt="Tokat Gaziosmanpaşa Üniversitesi"><span>Tokat Gaziosmanpaşa Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Istanbul Bilgi Üniversitesi"><img src="assets/images/logos/bilgi.png" loading="lazy" title="Istanbul Bilgi Üniversitesi" alt="Istanbul Bilgi Üniversitesi"><span>Istanbul Bilgi Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Muğla Sıtkı Koçman Üniversitesi"><img src="assets/images/logos/mu.png" loading="lazy" title="Muğla Sıtkı Koçman Üniversitesi" alt="Muğla Sıtkı Koçman Üniversitesi"><span>Muğla Sıtkı Koçman Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Karadeniz Teknik Üniversitesi"><img src="assets/images/logos/ktu.png" loading="lazy" title="Karadeniz Teknik Üniversitesi" alt="Karadeniz Teknik Üniversitesi"><span>Karadeniz Teknik Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Istanbul Kültür Üniversitesi"><img src="assets/images/logos/iku.png" loading="lazy" title="Istanbul Kültür Üniversitesi" alt="Istanbul Kültür Üniversitesi"><span>Istanbul Kültür Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Kadir Has Üniversitesi"><img src="assets/images/logos/khas.png" loading="lazy" title="Kadir Has Üniversitesi" alt="Kadir Has Üniversitesi"><span>Kadir Has Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Sivas Cumhuriyet Üniversitesi"><img src="assets/images/logos/cumhuriyet.png" loading="lazy" title="Sivas Cumhuriyet Üniversitesi" alt="Sivas Cumhuriyet Üniversitesi"><span>Sivas Cumhuriyet Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Yeditepe Üniversitesi"><img src="assets/images/logos/yeditepe.png" loading="lazy" title="Yeditepe Üniversitesi" alt="Yeditepe Üniversitesi"><span>Yeditepe Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Akdeniz Üniversitesi"><img src="assets/images/logos/akdeniz.png" loading="lazy" title="Akdeniz Üniversitesi" alt="Akdeniz Üniversitesi"><span>Akdeniz Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Kütahya Dumlupınar Üniversitesi"><img src="assets/images/logos/dumlupinar.png" loading="lazy" title="Kütahya Dumlupınar Üniversitesi" alt="Kütahya Dumlupınar Üniversitesi"><span>Kütahya Dumlupınar Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Haliç Üniversitesi"><img src="assets/images/logos/halic.png" loading="lazy" title="Haliç Üniversitesi" alt="Haliç Üniversitesi"><span>Haliç Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Anadolu Üniversitesi"><img src="assets/images/logos/anadolu.png" loading="lazy" title="Anadolu Üniversitesi" alt="Anadolu Üniversitesi"><span>Anadolu Üniversitesi</span></a></li>
+                <li><a href="university.html" title="Kahramanmaraş Sütçü Imam Üniversitesi"><img src="assets/images/logos/ksu.png" loading="lazy" title="Kahramanmaraş Sütçü Imam Üniversitesi" alt="Kahramanmaraş Sütçü Imam Üniversitesi"><span>Kahramanmaraş Sütçü Imam Üniversitesi</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="owl-carousel owl-loaded owl-drag">
+
+
+
+
+
+
+
+
+
+                    <div class="owl-stage-outer"><div class="owl-stage" style="transition: all 0s ease 0s; width: 4225px; transform: translate3d(-889px, 0px, 0px);"><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="8" data-position="4">
+                        <a><h2>Değişim Prog.</h2></a>
+                    </div></div><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="4" data-position="5">
+                        <a><h2>Ulaşım</h2></a>
+                    </div></div><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="2" data-position="6">
+                        <a><h2>Ortam</h2></a>
+                    </div></div><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="7" data-position="7">
+                        <a><h2>Diğer</h2></a>
+                    </div></div><div class="owl-item cloned active" style="width: 217.333px; margin-right: 5px;"><div class="item" id="6" data-position="8">
+                        <a><h2>İmkanlar</h2></a>
+                    </div></div><div class="owl-item active center" style="width: 217.333px; margin-right: 5px;"><div class="item" id="1" data-position="0">
+                        <a><h2>Eğitim</h2></a>
+                    </div></div><div class="owl-item active" style="width: 217.333px; margin-right: 5px;"><div class="item" id="5" data-position="1">
+                        <a><h2>Eğitimciler</h2></a>
+                    </div></div><div class="owl-item" style="width: 217.333px; margin-right: 5px;"><div class="item" id="9" data-position="2">
+                        <a><h2>Kariyer</h2></a>
+                    </div></div><div class="owl-item" style="width: 217.333px; margin-right: 5px;"><div class="item" id="3" data-position="3">
+                        <a><h2>Kalite</h2></a>
+                    </div></div><div class="owl-item" style="width: 217.333px; margin-right: 5px;"><div class="item" id="8" data-position="4">
+                        <a><h2>Değişim Prog.</h2></a>
+                    </div></div><div class="owl-item" style="width: 217.333px; margin-right: 5px;"><div class="item" id="4" data-position="5">
+                        <a><h2>Ulaşım</h2></a>
+                    </div></div><div class="owl-item" style="width: 217.333px; margin-right: 5px;"><div class="item" id="2" data-position="6">
+                        <a><h2>Ortam</h2></a>
+                    </div></div><div class="owl-item" style="width: 217.333px; margin-right: 5px;"><div class="item" id="7" data-position="7">
+                        <a><h2>Diğer</h2></a>
+                    </div></div><div class="owl-item" style="width: 217.333px; margin-right: 5px;"><div class="item" id="6" data-position="8">
+                        <a><h2>İmkanlar</h2></a>
+                    </div></div><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="1" data-position="0">
+                        <a><h2>Eğitim</h2></a>
+                    </div></div><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="5" data-position="1">
+                        <a><h2>Eğitimciler</h2></a>
+                    </div></div><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="9" data-position="2">
+                        <a><h2>Kariyer</h2></a>
+                    </div></div><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="3" data-position="3">
+                        <a><h2>Kalite</h2></a>
+                    </div></div><div class="owl-item cloned" style="width: 217.333px; margin-right: 5px;"><div class="item" id="8" data-position="4">
+                        <a><h2>Değişim Prog.</h2></a>
+                    </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><div class="icon-arrow-left icons prev-slide"></div></button><button type="button" role="presentation" class="owl-next"><div class="icon-arrow-right icons next-slide"></div></button></div><div class="owl-dots disabled"></div></div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="category-list">
+                <div class="row">
+                    <div class="col-12 explore">
+                        <div class="grid">
+
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+                                <div class="video-list" id="430">
+                                    <div class="video-header">
+                                        <a href="user.html">
+                                            <img src="assets/images/user/avatar.png" loading="lazy" />
+                                        </a>
+                                        <a href="user.html">
+                                            <span>abdullahturkmen</span>
+                                        </a>
+                                    </div>
+                                    <div class="video-content">
+                                        <span class="video-duration">00:38</span>
+                                        <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                        <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                        <div class="video-buttons">
+                                            <ul>
+                                                <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="video-description">
+                                        <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                        <p class="video-info">Herkese Merhaba</p>
+                                        <div class="video-detail">
+                                            <span class=""><i class="icon-heart icons"></i>1</span>
+                                            <span><i class="icon-eye icons"></i>66</span>
+                                            <span> • 9 ay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<script type="text/javascript">
+    var $owl = $('.owl-carousel');
+
+    $owl.children().each( function( index ) {
+        $(this).attr( 'data-position', index ); // NB: .attr() instead of .data()
+    });
+
+    $owl.owlCarousel({
+        margin: 5,
+        loop: true,
+        dots: false,
+        center: true,
+        nav: true,
+        navText: ["<div class='icon-arrow-left icons prev-slide'></div>", "<div class='icon-arrow-right icons next-slide'></div>"],
+        responsive: {
+            0: {
+                items: 3
+            },
+            991: {
+                items: 5
+            },
+            1200: {
+                items: 7
+            }
+        }
+    });
+
+    $(document).on('click', '.owl-item>div', function() {
+        // see https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html#to-owl-carousel
+        var $speed = 300;  // in ms
+        $owl.trigger('to.owl.carousel', [$(this).data( 'position' ), $speed] );
+    });
+
+
+    $(window).ready(function () {
+        var cat_id = $('.owl-item.center .item').attr('id');
+        var deger = "&cat_id="+cat_id
+        $.ajax({
+            type: "POST",
+            url: ajax_url + '/category-list',
+            data:deger,
+            beforeSend: function() {
+                $("#loader-div").show();
+            },
+            success:function (sonuc) {
+                $("#loader-div").hide(500);
+                $('#category-list').html(sonuc);
+            }
+        });
+
+    });
+
+    var owl = $('.owl-carousel');
+    owl.owlCarousel();
+    owl.on('translated.owl.carousel', function (event) {
+        //alert($('.owl-item.center .item').attr('id'));
+        var cat_id = $('.owl-item.center .item').attr('id');
+        var deger = "&cat_id=" + cat_id
+        $.ajax({
+            type: "POST",
+            url: ajax_url + '/category-list',
+            data: deger,
+            beforeSend: function () {
+                $("#loader-div").show();
+            },
+            success: function (sonuc) {
+                $("#loader-div").hide(500);
+                $('#category-list').html(sonuc);
+            }
+        });
+
+    });
+</script>
+<section class="footer">
+    <div class="container pt-3 pb-5">
+        <div class="col-md-10 col-lg-8 col-12 offset-md-1 offset-lg-2">
+            <div class="row">
+                <nav class="nav d-flex">
+                    <a class="p-2" href="support.html">Social Theme</a>
+                    <a class="d-none p-2" href="">Bölümler</a>
+                    <a class="p-2" href="about-us.html">Hakkımızda</a>
+                    <a class="p-2" href="privacy.html">Gizlilik Politikası</a>
+                    <a class="p-2" href="#">Kullanım Koşulları</a>
+                    <a class="p-2" href="faq.html">SSS</a>
+                    <a class="p-2" href="contact.html">Bilgi Merkezi</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mobile-bar d-md-none">
+    <div class="container">
+        <div id="menu-list">
+            <div class="list-item"><a href=""><i class="icon-home icons"></i><div class="list-item-title">Anasayfa</div></a></div>
+            <div class="list-item"><a href="videos.html"><i class="icon-control-play icons"></i><div class="list-item-title">İzle</div></a></div>
+            <div class="list-item"><a data-toggle="modal" data-target=".notification-modal" onclick="notificationReset();"><i class="icon-bell icons"></i><div class="list-item-title">Bildirimler</div>
+            </a></div>
+            <div class="list-item"><a data-toggle="modal" data-target=".bd-user-modal-sm">
+                <i class="icon-user icons"></i>
+                <div class="list-item-title">Profil</div>
+            </a></div>
+            <div class="shadow d-none"></div>
+        </div>
+    </div>
+</section>
+<div class="modal fade bd-user-modal-sm user-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li>
+                    <div id="darklight"><span>Gece modu: </span> <button class="dark"></button> <button class="light"></button></div>
+                </li>
+                <li><a href="login.html"><i class="icon-exclamation icons"></i> Giriş Yap / Üye Ol</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-gear-modal-sm gear-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><a href=""><i class="icon-pin icons"></i> Kaydet</a></li>
+                <li><a onclick="clickCopy()"><i class="icon-link icons"></i> Bağlantıyı Kopyala</a></li>
+                <li><a href=""><i class="icon-exclamation icons"></i> Şikayet Et</a></li>
+            </ul>
+        </div>
+        <input type="text" id="urlcopy" value="xxx111">
+    </div>
+</div>
+<div class="modal fade video-modal" id="video-popup" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-8 video-popup-frame">
+                        <div controlslist="nodownload" data-setup="{}" poster="" preload="auto" class="video-js vjs-styles-dimensions vjs-big-play-centered vjs-16-9 vjs-paused autoplay-dimensions vjs-workinghover vjs-v7 vjs-user-active vjs-error vjs-controls-disabled" id="autoplay" loop="true" autoplay="true" tabindex="-1" role="region" lang="tr" aria-label="Video Player"><video autoplay="" loop="true" id="autoplay_html5_api" class="vjs-tech" preload="auto" poster="" data-setup="{}" controlslist="nodownload" tabindex="-1" role="application">
+                            <source src="" type="video/mp4">
+                        </video><div class="vjs-poster vjs-hidden" aria-disabled="false"></div><div class="vjs-text-track-display" aria-live="off" aria-atomic="true"></div><div class="vjs-loading-spinner" dir="ltr"><span class="vjs-control-text">Video Player is loading.</span></div><button class="vjs-big-play-button" type="button" title="Play Video" aria-disabled="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Play Video</span></button><div class="vjs-control-bar" dir="ltr"><button class="vjs-play-control vjs-control vjs-button" type="button" title="Play" aria-disabled="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Play</span></button><div class="vjs-volume-panel vjs-control vjs-volume-panel-horizontal"><button class="vjs-mute-control vjs-control vjs-button" type="button" title="Mute" aria-disabled="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Mute</span></button><div class="vjs-volume-control vjs-control vjs-volume-horizontal"><div tabindex="0" class="vjs-volume-bar vjs-slider-bar vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Volume Level" aria-live="polite"><div class="vjs-volume-level"><span class="vjs-control-text"></span></div></div></div></div><div class="vjs-current-time vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Current Time&nbsp;</span><span class="vjs-current-time-display" aria-live="off" role="presentation">0:00</span></div><div class="vjs-time-control vjs-time-divider" aria-hidden="true"><div><span>/</span></div></div><div class="vjs-duration vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Duration&nbsp;</span><span class="vjs-duration-display" aria-live="off" role="presentation">0:00</span></div><div class="vjs-progress-control vjs-control"><div tabindex="0" class="vjs-progress-holder vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" aria-label="Progress Bar" aria-valuetext="0:00 of -:-"><div class="vjs-load-progress"><span class="vjs-control-text"><span>Loaded</span>: <span class="vjs-control-text-loaded-percentage">0%</span></span></div><div class="vjs-mouse-display"><div class="vjs-time-tooltip" aria-hidden="true"></div></div><div class="vjs-play-progress vjs-slider-bar" aria-hidden="true" style="width: 0%;"><div class="vjs-time-tooltip" aria-hidden="true">0:00</div></div></div></div><div class="vjs-live-control vjs-control vjs-hidden"><div class="vjs-live-display" aria-live="off"><span class="vjs-control-text">Stream Type&nbsp;</span>LIVE</div></div><button class="vjs-seek-to-live-control vjs-control" type="button" title="Seek to live, currently behind live" aria-disabled="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Seek to live, currently behind live</span><span class="vjs-seek-to-live-text" aria-hidden="true">LIVE</span></button><div class="vjs-remaining-time vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Remaining Time&nbsp;</span><span aria-hidden="true">-</span><span class="vjs-remaining-time-display" aria-live="off" role="presentation">0:00</span></div><div class="vjs-custom-control-spacer vjs-spacer ">&nbsp;</div><div class="vjs-playback-rate vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"><div class="vjs-playback-rate-value">1x</div><button class="vjs-playback-rate vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" title="Playback Rate" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Playback Rate</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"><button class="vjs-chapters-button vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" title="Chapters" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Chapters</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-title">Chapters</li></ul></div></div><div class="vjs-descriptions-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"><button class="vjs-descriptions-button vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" title="Descriptions" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Descriptions</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item vjs-selected" role="menuitemradio" aria-disabled="false" tabindex="-1" aria-checked="true"><span class="vjs-menu-item-text">descriptions off</span><span class="vjs-control-text" aria-live="polite">, selected</span></li></ul></div></div><div class="vjs-subs-caps-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"><button class="vjs-subs-caps-button vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" title="Subtitles" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Subtitles</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item vjs-selected" role="menuitemradio" aria-disabled="false" tabindex="-1" aria-checked="true"><span class="vjs-menu-item-text">captions and subtitles off</span><span class="vjs-control-text" aria-live="polite">, selected</span></li></ul></div></div><div class="vjs-audio-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"><button class="vjs-audio-button vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" title="Audio Track" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Audio Track</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"></ul></div></div><button class="vjs-picture-in-picture-control vjs-control vjs-button" type="button" title="Picture-in-Picture" aria-disabled="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Picture-in-Picture</span></button><button class="vjs-fullscreen-control vjs-control vjs-button" type="button" title="Fullscreen" aria-disabled="false"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Fullscreen</span></button></div><div class="vjs-error-display vjs-modal-dialog" aria-describedby="autoplay_component_363_description" aria-hidden="false" aria-label="Modal Window" role="dialog"><p class="vjs-modal-dialog-description vjs-control-text" id="autoplay_component_363_description">This is a modal window.</p><div class="vjs-modal-dialog-content" role="document">No compatible source was found for this media.</div></div><div class="vjs-modal-dialog vjs-hidden  vjs-text-track-settings" aria-describedby="autoplay_component_368_description" aria-hidden="true" aria-label="Caption Settings Dialog" role="dialog"><p class="vjs-modal-dialog-description vjs-control-text" id="autoplay_component_368_description">Beginning of dialog window. Escape will cancel and close the window.</p><div class="vjs-modal-dialog-content" role="document"><div class="vjs-track-settings-colors"><fieldset class="vjs-fg-color vjs-track-setting"><legend id="captions-text-legend-autoplay_component_368">Text</legend><label id="captions-foreground-color-autoplay_component_368" class="vjs-label">Color</label><select aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368"><option id="captions-foreground-color-autoplay_component_368-White" value="#FFF" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368 captions-foreground-color-autoplay_component_368-White">White</option><option id="captions-foreground-color-autoplay_component_368-Black" value="#000" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368 captions-foreground-color-autoplay_component_368-Black">Black</option><option id="captions-foreground-color-autoplay_component_368-Red" value="#F00" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368 captions-foreground-color-autoplay_component_368-Red">Red</option><option id="captions-foreground-color-autoplay_component_368-Green" value="#0F0" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368 captions-foreground-color-autoplay_component_368-Green">Green</option><option id="captions-foreground-color-autoplay_component_368-Blue" value="#00F" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368 captions-foreground-color-autoplay_component_368-Blue">Blue</option><option id="captions-foreground-color-autoplay_component_368-Yellow" value="#FF0" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368 captions-foreground-color-autoplay_component_368-Yellow">Yellow</option><option id="captions-foreground-color-autoplay_component_368-Magenta" value="#F0F" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368 captions-foreground-color-autoplay_component_368-Magenta">Magenta</option><option id="captions-foreground-color-autoplay_component_368-Cyan" value="#0FF" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-color-autoplay_component_368 captions-foreground-color-autoplay_component_368-Cyan">Cyan</option></select><span class="vjs-text-opacity vjs-opacity"><label id="captions-foreground-opacity-autoplay_component_368" class="vjs-label">Transparency</label><select aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-opacity-autoplay_component_368"><option id="captions-foreground-opacity-autoplay_component_368-Opaque" value="1" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-opacity-autoplay_component_368 captions-foreground-opacity-autoplay_component_368-Opaque">Opaque</option><option id="captions-foreground-opacity-autoplay_component_368-SemiTransparent" value="0.5" aria-labelledby="captions-text-legend-autoplay_component_368 captions-foreground-opacity-autoplay_component_368 captions-foreground-opacity-autoplay_component_368-SemiTransparent">Semi-Transparent</option></select></span></fieldset><fieldset class="vjs-bg-color vjs-track-setting"><legend id="captions-background-autoplay_component_368">Background</legend><label id="captions-background-color-autoplay_component_368" class="vjs-label">Color</label><select aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368"><option id="captions-background-color-autoplay_component_368-Black" value="#000" aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368 captions-background-color-autoplay_component_368-Black">Black</option><option id="captions-background-color-autoplay_component_368-White" value="#FFF" aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368 captions-background-color-autoplay_component_368-White">White</option><option id="captions-background-color-autoplay_component_368-Red" value="#F00" aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368 captions-background-color-autoplay_component_368-Red">Red</option><option id="captions-background-color-autoplay_component_368-Green" value="#0F0" aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368 captions-background-color-autoplay_component_368-Green">Green</option><option id="captions-background-color-autoplay_component_368-Blue" value="#00F" aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368 captions-background-color-autoplay_component_368-Blue">Blue</option><option id="captions-background-color-autoplay_component_368-Yellow" value="#FF0" aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368 captions-background-color-autoplay_component_368-Yellow">Yellow</option><option id="captions-background-color-autoplay_component_368-Magenta" value="#F0F" aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368 captions-background-color-autoplay_component_368-Magenta">Magenta</option><option id="captions-background-color-autoplay_component_368-Cyan" value="#0FF" aria-labelledby="captions-background-autoplay_component_368 captions-background-color-autoplay_component_368 captions-background-color-autoplay_component_368-Cyan">Cyan</option></select><span class="vjs-bg-opacity vjs-opacity"><label id="captions-background-opacity-autoplay_component_368" class="vjs-label">Transparency</label><select aria-labelledby="captions-background-autoplay_component_368 captions-background-opacity-autoplay_component_368"><option id="captions-background-opacity-autoplay_component_368-Opaque" value="1" aria-labelledby="captions-background-autoplay_component_368 captions-background-opacity-autoplay_component_368 captions-background-opacity-autoplay_component_368-Opaque">Opaque</option><option id="captions-background-opacity-autoplay_component_368-SemiTransparent" value="0.5" aria-labelledby="captions-background-autoplay_component_368 captions-background-opacity-autoplay_component_368 captions-background-opacity-autoplay_component_368-SemiTransparent">Semi-Transparent</option><option id="captions-background-opacity-autoplay_component_368-Transparent" value="0" aria-labelledby="captions-background-autoplay_component_368 captions-background-opacity-autoplay_component_368 captions-background-opacity-autoplay_component_368-Transparent">Transparent</option></select></span></fieldset><fieldset class="vjs-window-color vjs-track-setting"><legend id="captions-window-autoplay_component_368">Window</legend><label id="captions-window-color-autoplay_component_368" class="vjs-label">Color</label><select aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368"><option id="captions-window-color-autoplay_component_368-Black" value="#000" aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368 captions-window-color-autoplay_component_368-Black">Black</option><option id="captions-window-color-autoplay_component_368-White" value="#FFF" aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368 captions-window-color-autoplay_component_368-White">White</option><option id="captions-window-color-autoplay_component_368-Red" value="#F00" aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368 captions-window-color-autoplay_component_368-Red">Red</option><option id="captions-window-color-autoplay_component_368-Green" value="#0F0" aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368 captions-window-color-autoplay_component_368-Green">Green</option><option id="captions-window-color-autoplay_component_368-Blue" value="#00F" aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368 captions-window-color-autoplay_component_368-Blue">Blue</option><option id="captions-window-color-autoplay_component_368-Yellow" value="#FF0" aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368 captions-window-color-autoplay_component_368-Yellow">Yellow</option><option id="captions-window-color-autoplay_component_368-Magenta" value="#F0F" aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368 captions-window-color-autoplay_component_368-Magenta">Magenta</option><option id="captions-window-color-autoplay_component_368-Cyan" value="#0FF" aria-labelledby="captions-window-autoplay_component_368 captions-window-color-autoplay_component_368 captions-window-color-autoplay_component_368-Cyan">Cyan</option></select><span class="vjs-window-opacity vjs-opacity"><label id="captions-window-opacity-autoplay_component_368" class="vjs-label">Transparency</label><select aria-labelledby="captions-window-autoplay_component_368 captions-window-opacity-autoplay_component_368"><option id="captions-window-opacity-autoplay_component_368-Transparent" value="0" aria-labelledby="captions-window-autoplay_component_368 captions-window-opacity-autoplay_component_368 captions-window-opacity-autoplay_component_368-Transparent">Transparent</option><option id="captions-window-opacity-autoplay_component_368-SemiTransparent" value="0.5" aria-labelledby="captions-window-autoplay_component_368 captions-window-opacity-autoplay_component_368 captions-window-opacity-autoplay_component_368-SemiTransparent">Semi-Transparent</option><option id="captions-window-opacity-autoplay_component_368-Opaque" value="1" aria-labelledby="captions-window-autoplay_component_368 captions-window-opacity-autoplay_component_368 captions-window-opacity-autoplay_component_368-Opaque">Opaque</option></select></span></fieldset></div><div class="vjs-track-settings-font"><fieldset class="vjs-font-percent vjs-track-setting"><legend id="captions-font-size-autoplay_component_368" class="">Font Size</legend><select aria-labelledby="captions-font-size-autoplay_component_368"><option id="captions-font-size-autoplay_component_368-50" value="0.50" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-50">50%</option><option id="captions-font-size-autoplay_component_368-75" value="0.75" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-75">75%</option><option id="captions-font-size-autoplay_component_368-100" value="1.00" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-100">100%</option><option id="captions-font-size-autoplay_component_368-125" value="1.25" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-125">125%</option><option id="captions-font-size-autoplay_component_368-150" value="1.50" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-150">150%</option><option id="captions-font-size-autoplay_component_368-175" value="1.75" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-175">175%</option><option id="captions-font-size-autoplay_component_368-200" value="2.00" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-200">200%</option><option id="captions-font-size-autoplay_component_368-300" value="3.00" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-300">300%</option><option id="captions-font-size-autoplay_component_368-400" value="4.00" aria-labelledby="captions-font-size-autoplay_component_368 captions-font-size-autoplay_component_368-400">400%</option></select></fieldset><fieldset class="vjs-edge-style vjs-track-setting"><legend id="autoplay_component_368" class="">Text Edge Style</legend><select aria-labelledby="autoplay_component_368"><option id="autoplay_component_368-None" value="none" aria-labelledby="autoplay_component_368 autoplay_component_368-None">None</option><option id="autoplay_component_368-Raised" value="raised" aria-labelledby="autoplay_component_368 autoplay_component_368-Raised">Raised</option><option id="autoplay_component_368-Depressed" value="depressed" aria-labelledby="autoplay_component_368 autoplay_component_368-Depressed">Depressed</option><option id="autoplay_component_368-Uniform" value="uniform" aria-labelledby="autoplay_component_368 autoplay_component_368-Uniform">Uniform</option><option id="autoplay_component_368-Dropshadow" value="dropshadow" aria-labelledby="autoplay_component_368 autoplay_component_368-Dropshadow">Dropshadow</option></select></fieldset><fieldset class="vjs-font-family vjs-track-setting"><legend id="captions-font-family-autoplay_component_368" class="">Font Family</legend><select aria-labelledby="captions-font-family-autoplay_component_368"><option id="captions-font-family-autoplay_component_368-ProportionalSansSerif" value="proportionalSansSerif" aria-labelledby="captions-font-family-autoplay_component_368 captions-font-family-autoplay_component_368-ProportionalSansSerif">Proportional Sans-Serif</option><option id="captions-font-family-autoplay_component_368-MonospaceSansSerif" value="monospaceSansSerif" aria-labelledby="captions-font-family-autoplay_component_368 captions-font-family-autoplay_component_368-MonospaceSansSerif">Monospace Sans-Serif</option><option id="captions-font-family-autoplay_component_368-ProportionalSerif" value="proportionalSerif" aria-labelledby="captions-font-family-autoplay_component_368 captions-font-family-autoplay_component_368-ProportionalSerif">Proportional Serif</option><option id="captions-font-family-autoplay_component_368-MonospaceSerif" value="monospaceSerif" aria-labelledby="captions-font-family-autoplay_component_368 captions-font-family-autoplay_component_368-MonospaceSerif">Monospace Serif</option><option id="captions-font-family-autoplay_component_368-Casual" value="casual" aria-labelledby="captions-font-family-autoplay_component_368 captions-font-family-autoplay_component_368-Casual">Casual</option><option id="captions-font-family-autoplay_component_368-Script" value="script" aria-labelledby="captions-font-family-autoplay_component_368 captions-font-family-autoplay_component_368-Script">Script</option><option id="captions-font-family-autoplay_component_368-SmallCaps" value="small-caps" aria-labelledby="captions-font-family-autoplay_component_368 captions-font-family-autoplay_component_368-SmallCaps">Small Caps</option></select></fieldset></div><div class="vjs-track-settings-controls"><button type="button" class="vjs-default-button" title="restore all settings to the default values">Reset<span class="vjs-control-text"> restore all settings to the default values</span></button><button type="button" class="vjs-done-button">Done</button></div></div><button class="vjs-close-button vjs-control vjs-button" type="button" aria-disabled="false" title="Close Modal Dialog"><span aria-hidden="true" class="vjs-icon-placeholder"></span><span class="vjs-control-text" aria-live="polite">Close Modal Dialog</span></button><p class="vjs-control-text">End of dialog window.</p></div></div>
+                        <p id="video-id" style="display: none"></p>
+                    </div>
+                    <div class="col-12 col-lg-4 video-popup-details">
+                        <a class="info-modal-btn" href="" data-toggle="modal" data-target=".info-modal"><i class="icon-info icons"></i></a>
+                        <div class="video-popup-scroll">
+                            <div class="video-shared">
+                                <a href="">
+                                    <img src="assets/images/user/avatar.png">
+                                </a>
+                                <a href="">
+                                    <span>username</span>
+                                </a>
+                                <span class="shared-time"> • 2 saat</span>
+                                <p>Video açıklama metin alanı</p>
+                            </div>
+                            <div class="video-comment-list">
+                                <ul>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 1</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Video bilgilendirici olmuş</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 2</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Güzel video</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 3</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Açıklama işe yarar</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="video-comment-send">
+                                <form action="" method="post">
+                                    <div class="comment-box">
+                                        <a href="">Gönder</a>
+                                        <input type="text" placeholder="Yorum yap">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade notification-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><a href="login.html"><i class="icon-exclamation icons"></i> Neler olup bittiğini öğrenmek için hemen giriş yap!</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(myfunction);
+    $(window).on('resize',myfunction);
+
+    function myfunction(){
+        var width = $(".owl-item .item img").width();
+        $(".owl-item .item img").height(width);
+    };
+
+</script>
+<div id="loader-div" style="display: none;">
+    <img src="assets/images/loading.gif">
+</div>
+<script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="assets/js/vue.js"></script>
+<script src="assets/js/jquery.js?v=1.0.3"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js" integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.esm.min.js" integrity="sha384-sKZy8g2KJhBTFCD6cIg8d4EifJxaa8c/iYIERdeKorHWhAgZgQOfqOKMe3xBqye1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.min.js" integrity="sha512-n9OoMZw+LpkURqH5ODKhxjs08ZI97Pi4pIxEnqz2mHhzZmjW7UeOm/0+lvSjQ6lepdpGkPA7L8chC0UtUbXxZg==" crossorigin="anonymous"></script>
+<script src="assets/js/intro.js"></script>
+
+</body></html>

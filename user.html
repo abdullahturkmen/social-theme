@@ -1,0 +1,1525 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>abdullahturkmen | Social Theme</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1">
+    <link rel="stylesheet" href="assets/css/color.css?v=1.0.4">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.0.6">
+    <link rel="stylesheet" href="assets/css/introjs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/simplelineicons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+    <script>var ajax_url = 'ajax';</script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script>
+        $(document).on("submit","form#video-settings",function () {
+            //var data = new FormData(this);
+            //console.log(this.attributes[0].value);
+            var video_id = $('form#video-settings')[0].attributes[0].value;
+            //var video_id = 0;
+            //console.log($('form#video-settings'));
+            var description = $('#description')[0].value;
+            var university_id = $('#universities')[0].value;
+            var faculty_id = $('#faculties')[0].value;
+            var department_id = $('#departments')[0].value;
+            var category_id = $('#categories')[0].value;
+            //console.log(category);
+
+            $.post(ajax_url + '/events',{'type':'user-video-update','video_id':video_id,'description':description,'category_id':category_id,'university_id':university_id,'faculty_id':faculty_id,'department_id':department_id},function(sonuc){
+                //console.log(sonuc);
+                $('body').append(sonuc);
+            });
+
+        });
+    </script>
+</head>
+<body class="dark">
+<section class="navbar fixed-top">
+    <div class="container-fluid">
+        <div class="col-12 search-box">
+            <div class="row d-none d-md-flex">
+                <div class="col-3">
+                    <a href="index.html" class="btn-home"><img src="assets/images/logo.png"></a>
+                </div>
+                <div class="col-5">
+                    <div class="search-bar header_search_form">
+                        <i class="icon-magnifier icons"></i>
+                        <input autocomplete="off" name="s" type="text" placeholder="Ara" />
+                    </div>
+                </div>
+                <div class="col-4">
+                    <ul class="user-menu">
+                        <li><a href="#"><i class="icon-present icons" title="Çekiliş"><span class="notification-dot"></span></i></a></li>
+                        <li><a href="videos.html"><i class="icon-control-play icons" data-placement="top" data-toggle="tooltip" title="Video topluluğu"></i></a></li>
+                        <li><a data-toggle="modal" data-target=".notification-modal" onclick="notificationReset();"><i class="icon-bell icons" data-placement="top" data-toggle="tooltip" title="Bildirimler"></i>
+                        </a></li>
+                        <li><a href="upload.html"><i class="icon-camrecorder icons" data-placement="top" data-toggle="tooltip" title="Sen de anlat"></i></a></li>
+                        <li><a data-toggle="modal" data-target=".bd-user-modal-sm">
+                            <img src="assets/images/user/avatar.png" id="avatarPreviewNavbar">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row d-md-none" id="mobile-bar">
+                <div class="mobile-without-search">
+                    <div class="col-5">
+                        <a href="index.html" class="btn-home"><img src="assets/images/logo.png"></a>
+                    </div>
+                    <div class="col-7">
+                        <ul class="user-menu">
+                            <li><a href="#"><i class="icon-present icons" title="Çekiliş"><span class="notification-dot"></span></i></a></li>
+                            <li><a href="upload"><i class="icon-camrecorder icons"></i></a></li>
+                            <li><a class="mobile-search-open" v-on:click="showMobileMenu = !showMobileMenu"><i class="icon-magnifier icons"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mobile-with-search" v-bind:class="{ active: showMobileMenu }">
+                    <div class="search-bar header_search_form">
+                        <i class="icon-magnifier icons"></i>
+                        <input autocomplete="off" name="s" type="text" placeholder="Ara" id="mobile-search-input" />
+                    </div>
+                    <a v-on:click="showMobileMenu = !showMobileMenu"><i class="icon-close icons"></i></a>
+                </div>
+            </div>
+            <div class="search-result-box col-12 col-md-6">
+                <ul class="list-group liveresult"></ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row profile-header">
+                    <div class="col-12 cover" style="background: url('assets/images/user/cover/cover.jpg')" id="coverPreview" data-toggle="modal" data-target=".cover-view-modal">
+                        <div class="cover-edit"><a data-toggle="modal" data-target=".cover-modal"><i class="icon-options icons"></i></a></div> </div>
+                    <div class="col-12 user-detail">
+                        <div class="user-info">
+                            <div class="avatar-edit">
+                                <a data-toggle="modal" data-target=".avatar-modal" class="cursor-pointer">
+                                    <img src="assets/images/user/avatar.png" id="avatarPreview" />
+                                </a>
+                            </div>
+                            <a>
+                                <span>@abdullahturkmen</span>
+                            </a>
+                        </div>
+                        <a class="profile-modal-btn d-none" data-toggle="modal" data-target=".profile-modal"><i class="icon-options-vertical icons"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row profile-socials">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row profile-menu">
+                    <div class="col-12 user-menu">
+                        <ul class="nav" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-home-tab" title="Videoları" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                                    <span id="video-count">11</span>
+                                    <i class="icon-control-play icons"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-profile-tab" title="Beğendikleri" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                    <span id="like-count">8</span>
+                                    <i class="icon-heart icons"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-saved-tab" title="Kaydettiklerim" data-toggle="pill" href="#pills-saved" role="tab" aria-controls="pills-saved" aria-selected="false">
+                                    <span id="save-count"></span>
+                                    <i class="icon-pin icons"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact-tab" title="Hakkında" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                    <span></span>
+                                    <i class="icon-user icons"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 explore">
+                    <div class="row">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                                <div class="grid" data-step="1" data-intro="Ok" data-position='right' data-scrollTo='tooltip'>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid-item">
+                                    <div class="video-list" id="430">
+                                        <div class="video-header">
+                                            <a href="user.html">
+                                                <img src="assets/images/user/avatar.png" loading="lazy" />
+                                            </a>
+                                            <a href="user.html">
+                                                <span>abdullahturkmen</span>
+                                            </a>
+                                        </div>
+                                        <div class="video-content">
+                                            <span class="video-duration">00:38</span>
+                                            <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                            <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                            <div class="video-buttons">
+                                                <ul>
+                                                    <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                    <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="video-description">
+                                            <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                            <p class="video-info">Herkese Merhaba</p>
+                                            <div class="video-detail">
+                                                <span class=""><i class="icon-heart icons"></i>1</span>
+                                                <span><i class="icon-eye icons"></i>66</span>
+                                                <span> • 9 ay</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+</div>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                                <div class="grid" data-step="1" data-intro="Ok" data-position='right' data-scrollTo='tooltip'>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-1.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-2.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-4.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-item">
+                                        <div class="video-list" id="430">
+                                            <div class="video-header">
+                                                <a href="user.html">
+                                                    <img src="assets/images/user/avatar.png" loading="lazy" />
+                                                </a>
+                                                <a href="user.html">
+                                                    <span>abdullahturkmen</span>
+                                                </a>
+                                            </div>
+                                            <div class="video-content">
+                                                <span class="video-duration">00:38</span>
+                                                <img src="assets/images/cover/student-3.jpg" loading="lazy">
+                                                <a href="video.html" onclick="video(430)" class="video-control"><i class="icon-control-play icons"></i></a>
+                                                <div class="video-buttons">
+                                                    <ul>
+                                                        <li><a><i class="icon-pin icons save-btn " data-placement="left" data-toggle="tooltip" title="Kaydet"></i></a></li>
+                                                        <li><a><i class="icon-heart icons like-btn " data-placement="left" data-toggle="tooltip" title="Beğen"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="video-description">
+                                                <div class="education-info"><a href="university.html">Marmara Üniversitesi</a> • <a href="university.html">Siyaset Bilimi ve Uluslararası İlişkiler</a></div>
+                                                <p class="video-info">Herkese Merhaba</p>
+                                                <div class="video-detail">
+                                                    <span class=""><i class="icon-heart icons"></i>1</span>
+                                                    <span><i class="icon-eye icons"></i>66</span>
+                                                    <span> • 9 ay</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="pills-saved" role="tabpanel" aria-labelledby="pills-saved-tab">
+                                <div class="row">
+                                    <div class="no-post">
+                                        <img src="assets/images/no-video.png">
+                                        <h3>Henüz kaydedilmiş video yok!</h3>
+                                        <p>Bağandiğin videoları kaydederek kaybolmamasını sağlayabilirsin</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <div class="row">
+                                    <div class="user-profile-details">
+                                        <h2>Kişisel Bilgiler</h2>
+                                        <ul>
+                                            <li><span>Kullanıcı Adı</span><span>abdullahturkmen</span></li> <li><span>Adı</span><span>Abdullah Turkmen</span></li> </ul>
+                                        <h2>Eğitim Bilgileri</h2>
+                                        <ul>
+                                            <li><span>Üniversite</span><span>Marmara Üniversitesi</span></li> <li><span>Fakülte</span><span>Mühendislik Fakültesi</span></li> <li><span>Bölüm</span><span>Bilgisayar Mühendisliği</span></li> </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer">
+    <div class="container pt-3 pb-5">
+        <div class="col-md-10 col-lg-8 col-12 offset-md-1 offset-lg-2">
+            <div class="row">
+                <nav class="nav d-flex">
+                    <a class="p-2" href="support.html">Social Theme</a>
+                    <a class="d-none p-2" href="">Bölümler</a>
+                    <a class="p-2" href="about-us.html">Hakkımızda</a>
+                    <a class="p-2" href="privacy.html">Gizlilik Politikası</a>
+                    <a class="p-2" href="#">Kullanım Koşulları</a>
+                    <a class="p-2" href="faq.html">SSS</a>
+                    <a class="p-2" href="contact.html">Bilgi Merkezi</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mobile-bar d-md-none">
+    <div class="container">
+        <div id="menu-list">
+            <div class="list-item"><a href=""><i class="icon-home icons"></i><div class="list-item-title">Anasayfa</div></a></div>
+            <div class="list-item"><a href="videos.html"><i class="icon-control-play icons"></i><div class="list-item-title">İzle</div></a></div>
+            <div class="list-item"><a data-toggle="modal" data-target=".notification-modal" onclick="notificationReset();"><i class="icon-bell icons"></i><div class="list-item-title">Bildirimler</div>
+            </a></div>
+            <div class="list-item"><a data-toggle="modal" data-target=".bd-user-modal-sm">
+                <img src="assets/images/user/avatar.png" id="avatarPreviewMobile">
+                <div class="list-item-title">Profil</div>
+            </a></div>
+            <div class="shadow d-none"></div>
+        </div>
+    </div>
+</section>
+<div class="modal fade bd-user-modal-sm user-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><a href="user.html"><i class="icon-user icons"></i> Profilim</a></li>
+                <li><a href="settings.html"><i class="icon-settings icons"></i> Ayarlar</a></li>
+                <li>
+                    <div id="darklight">
+                        <span>Gece modu: </span>
+                        <button class="dark" @click="toggleBodyClass('addClass', 'dark')"></button>
+                        <button class="light" @click="toggleBodyClass('addClass', 'light')"></button>
+                    </div>
+                </li>
+                <li><a href="login.html"><i class="icon-power icons"></i> Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-gear-modal-sm gear-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><a href=""><i class="icon-pin icons"></i> Kaydet</a></li>
+                <li><a onclick="clickCopy()"><i class="icon-link icons"></i> Bağlantıyı Kopyala</a></li>
+                <li><a href=""><i class="icon-exclamation icons"></i> Şikayet Et</a></li>
+            </ul>
+        </div>
+        <input type="text" id="urlcopy" value="xxx111">
+    </div>
+</div>
+<div class="modal fade video-modal" id="video-popup" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-8 video-popup-frame">
+                        <video autoplay loop="true" id="autoplay" class="video-js vjs-styles-dimensions vjs-big-play-centered vjs-16-9" controls preload="auto" width="640" height="264" poster="" data-setup="{}" controlsList="nodownload">
+                            <source src="" type="video/mp4" />
+                        </video>
+                        <p id="video-id" style="display: none"></p>
+                    </div>
+                    <div class="col-12 col-lg-4 video-popup-details">
+                        <a class="info-modal-btn" href="" data-toggle="modal" data-target=".info-modal"><i class="icon-info icons"></i></a>
+                        <div class="video-popup-scroll">
+                            <div class="video-shared">
+                                <a href="">
+                                    <img src="assets/images/user/avatar.png">
+                                </a>
+                                <a href="">
+                                    <span>username</span>
+                                </a>
+                                <span class="shared-time"> • 2 saat</span>
+                                <p>Video açıklama metin alanı</p>
+                            </div>
+                            <div class="video-comment-list">
+                                <ul>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 1</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Video bilgilendirici olmuş</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 2</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Güzel video</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 3</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Açıklama işe yarar</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="video-comment-send">
+                                <form action="" method="post">
+                                    <div class="comment-box">
+                                        <a href="">Gönder</a>
+                                        <input type="text" placeholder="Yorum yap">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade notification-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><i class="icon-exclamation"></i> Yeni bildirim bulunmamakta</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal fade video-detail-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content video-edit-modal">
+            <img src="assets/images/loading.gif" class="w-100" id="video-edit-loading">
+        </div>
+    </div>
+</div>
+<div class="modal fade cover-view-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <img src="assets/images/user/cover/cover.jpg" class="w-100" id="coverPreviewModal">
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#uploadAvatar").on('change',function(){
+            $('.avatar-btn').addClass('active');
+            $('.avatar-btn')[0].children[1].innerHTML = 'Dosya Seçildi!';
+        });
+    });
+    function PreviewAvatar() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadAvatar").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            $(document).on("submit","form#avatar",function () {
+                var data = new FormData(this);
+                //console.log(this);
+                $.ajax({
+                    url: ajax_url + '/settings',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    type: "POST",
+                    beforeSend: function () {
+                        $("#modal-loader").show();
+                    },
+                    success: function (sonuc) {
+                        $('.avatar-content').html(sonuc);
+                        $("#modal-loader").hide();
+                        $('.avatar-success').hide();
+                        document.getElementById("avatarPreviewNavbar").src = oFREvent.target.result;
+                        document.getElementById("avatarPreview").src = oFREvent.target.result;
+                        document.getElementById("avatarPreviewMobile").src = oFREvent.target.result;
+                    }
+                })
+            })
+
+        };
+    };
+
+
+</script>
+<div class="modal fade bd-avatar-modal-sm avatar-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <form method="post" action="javascript:void(0);" enctype="multipart/form-data" name="submit" id="avatar">
+                <div class="modal-header">
+                    <h5 class="modal-title">Profil Resmi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body avatar-content">
+                    <div id="modal-loader"><img src="assets/images/loading.gif"></div>
+                    <button class="upload-btn avatar-btn">
+                        <i class="icon-picture icons"></i>
+                        <span>Bir profil resmi seç!</span>
+                    </button>
+                    <input type="file" name="avatar" accept="image/*" id="uploadAvatar" onchange="PreviewAvatar();">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-success avatar-success">Kaydet</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Kapat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#uploadCover").on('change',function(){
+            $('.cover-btn').addClass('active');
+            $('.cover-btn')[0].children[1].innerHTML = 'Dosya Seçildi!';
+        });
+    });
+    function PreviewCover() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadCover").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            $(document).on("submit","form#cover",function () {
+                var data = new FormData(this);
+                //console.log(this);
+                $.ajax({
+                    url: ajax_url + '/settings',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    type: "POST",
+                    beforeSend: function () {
+                        $("#modal-loader").show();
+                    },
+                    success: function (sonuc) {
+                        $('.cover-content').html(sonuc);
+                        $("#modal-loader").hide();
+                        $('.cover-success').hide();
+                        document.getElementById("coverPreview").style.backgroundSize = "cover !important";
+                        document.getElementById("coverPreview").style.backgroundPosition = "center !important";
+                        document.getElementById("coverPreview").style.backgroundImage = "url('" + oFREvent.target.result + "')";
+                        document.getElementById("coverPreviewModal").src = oFREvent.target.result;
+                    }
+                })
+            })
+
+        };
+    };
+
+</script>
+<div class="modal fade bd-cover-modal-sm cover-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <form method="post" action="javascript:void(0);" enctype="multipart/form-data" name="submit" id="cover">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kapak Resmi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body cover-content">
+                    <div id="modal-loader"><img src="assets/images/loading.gif"></div>
+                    <button class="upload-btn cover-btn">
+                        <i class="icon-picture icons"></i>
+                        <span>Bir kapak resmi seç!</span>
+                    </button>
+                    <input type="file" name="cover" accept="image/*" id="uploadCover" onchange="PreviewCover();">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-success cover-success">Kaydet</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Kapat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-gear-modal-sm profile-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><a href="settings.html"><i class="icon-settings icons"></i> Ayarlar</a></li>
+                <li><a onclick="clickCopy()"><i class="icon-link icons"></i> Profil Bağlantısını Kopyala</a></li>
+                <li class="d-none"><a href=""><i class="icon-exclamation icons"></i> Şikayet Et</a></li>
+            </ul>
+        </div>
+        <input type="text" id="urlcopy" value="user.html">
+    </div>
+</div>
+<script>
+
+    function clickCopy() {
+
+        var copyText = document.getElementById("urlcopy");
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+    }
+
+</script>
+<script>
+
+    $(document).ready(myfunction);
+    $(window).on('resize',myfunction);
+
+    function myfunction(){
+        var width = $(".owl-item .item img").width();
+        $(".owl-item .item img").height(width);
+    };
+
+</script>
+<div id="loader-div">
+    <img src="assets/images/loading.gif">
+</div>
+<script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="assets/js/vue.js"></script>
+<script src="assets/js/jquery.js?v=1.0.3"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js" integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.esm.min.js" integrity="sha384-sKZy8g2KJhBTFCD6cIg8d4EifJxaa8c/iYIERdeKorHWhAgZgQOfqOKMe3xBqye1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.min.js" integrity="sha512-n9OoMZw+LpkURqH5ODKhxjs08ZI97Pi4pIxEnqz2mHhzZmjW7UeOm/0+lvSjQ6lepdpGkPA7L8chC0UtUbXxZg==" crossorigin="anonymous"></script>
+<script src="assets/js/intro.js"></script>
+<script>
+    $('.videodisplay').click(function () {
+        var display = this;
+        display.classList.toggle('btn-success');
+        display.classList.toggle('btn-warning');
+
+        var statu = display.innerText;
+        //console.log(display);
+        if(statu == "Aktif"){
+
+            display.innerText = 'Pasif';
+        }
+        else if(statu == "Pasif"){
+
+            display.innerText = "Aktif";
+        }
+        id = display.id;
+        $.post(ajax_url + '/events',{'type':'profil-display','id':id},function (sonuc) {});
+    })
+</script>
+<script>
+    $('.videodelete').click(function () {
+        var deletes = this;
+        var id = this.id;
+
+
+        Swal.fire({
+            title: 'Video Silinsin Mi?',
+            text: "Video kalıcı olarak silinecek. İsterseniz sadece diğer kullanıcılara gizleyerek görünmemesini sağlayabilirsiniz.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Vazgeç',
+            confirmButtonText: 'Silinsin'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deletes.parentElement.parentElement.innerHTML = "";
+                var likeCount = $('#video-count')[0].innerText;
+                $('#video-count')[0].innerText = likeCount - 1;
+                $.post(ajax_url + '/events',{'type':'video-delete','id':id},function (sonuc) {});
+                Swal.fire(
+                    'Video Silindi!',
+                    '',
+                    'success'
+                )
+            }
+        })
+
+
+    })
+</script>
+<script>
+    $('.dislike').click(function () {
+        var dislike = this;
+        var id = this.id;
+        dislike.parentElement.parentElement.innerHTML = "";
+        var likeCount = $('#like-count')[0].innerText;
+        $('#like-count')[0].innerText = likeCount - 1;
+        $.post(ajax_url + '/events',{'type':'profil-dislike','id':id},function (sonuc) {});
+    })
+</script>
+<script>
+    $('.notsave').click(function () {
+        var notsave = this;
+        var id = this.id;
+        notsave.parentElement.parentElement.innerHTML = "";
+        var saveCount = $('#save-count')[0].innerText;
+        $('#save-count')[0].innerText = saveCount - 1;
+        $.post(ajax_url + '/events',{'type':'profil-notsave','id':id},function (sonuc) {});
+    })
+</script>
+<script>
+    function noDelete(id) {
+        Swal.fire({
+            title: 'Bu Video Ücretlidir',
+            text: "Bu videonun yayınlanması için gerekli izin alındı ve ücret ödendi. Yine de işlem yapmak istiyorsanız yöneticiye mail gönderebilirsiniz",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Vazgeç',
+            confirmButtonText: 'Mail Gönder'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //alert(id);
+                $.post(ajax_url + '/events', {'type':'not-deleted-video', 'id':id},function(sonuc) {});
+                Swal.fire(
+                    'Mail Gönderildi!',
+                    'Lütfen profilinizde mail adresinizin veya telefonunuzun bulunduğuna bakın. Sizinle oradan iletişime geçilecektir',
+                    'success'
+                )
+            }
+        })
+    }
+</script>
+<script>
+    function videoEdit(id) {
+        //console.log(id);
+        //$('.video-edit-modal').append(id);
+        $.post(ajax_url + '/events',{'type':'video-details','id':id},function(sonuc){
+            //console.log(sonuc);
+            $('.video-edit-modal').html(sonuc);
+        });
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
+</body>
+</html>

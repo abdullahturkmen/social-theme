@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>Bilgi Merkezi</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="assets/support/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/simplelineicons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+    <script>var ajax_url = 'ajax';</script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="" href="support.html">
+            <img src="assets/images/logo.png">
+        </a>
+        <a href="user.html">
+            <img class="user-profile" src="assets/images/user/avatar.png">
+        </a>
+    </div>
+    </div>
+</nav>
+<div class="container clear-page">
+    <div class="row">
+        <div class="page-title">Bilgi Merkezi</div>
+        <div class="contact-page">
+            <div class="row contact-list">
+                <div class="col-md-4 col-12">
+                    <div class="list-item">
+                        <a href="mailto:abdullahtrkmn13@gmail.com">
+                            <i class="icon-envelope icons"></i>
+                            <span>EMAİL</span>
+                            <p>abdullahtrkmn13@gmail.com</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="list-item">
+                        <a href="tel:+905372997045">
+                            <i class="icon-phone icons"></i>
+                            <span>TELEFON</span>
+                            <p>0537 299 70 45</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="list-item">
+                        <a href="#" target="_blank">
+                            <i class="icon-location-pin icons"></i>
+                            <span>KONUM</span>
+                            <p>Sultangazi / İstanbul</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md">
+                <img height="20px" src="assets/images/logo.png">
+                <small class="d-block mb-3 text-muted">&copy; 2020</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Social Theme</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="support.html">Nedir?</a></li>
+                    <li><a class="text-muted" href="about-us.html">Hakkımızda</a></li>
+                    <li><a class="text-muted" href="privacy.html">Gizlilik Politikası</a></li>
+                    <li><a class="text-muted" href="#">Kullanım Koşulları</a></li>
+                    <li class="d-none"><a class="text-muted" href="support/brand">Marka</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Yardım</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="faq.html">SSS</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Kurumsal</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Üniversiteler İçin</a></li>
+                    <li><a class="text-muted" href="#">İşletmeler İçin</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Bize Ulaşın</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="contact.html">Bilgi Merkezi</a></li>
+                    <li><a class="text-muted" href="tel:+905372997045">0537 299 70 45</a></li>
+                    <li><a class="text-muted" href="mailto:abdullahtrkmn13@gmail.com"><span class="__cf_email__" data-cfemail="2d49485e5948466d464c405d585e464c4b4c5e44034e4240">abdullahtrkmn13@gmail.com</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="social-list">
+                <li><a href="https://www.instagram.com/" target="_blank"><i class="icon-social-instagram icons"></i></a></li>
+                <li><a href="https://twitter.com/" target="_blank"><i class="icon-social-twitter icons"></i></a></li>
+                <li><a href="https://www.facebook.com/" target="_blank"><i class="icon-social-facebook icons"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+    $(document).on("submit","form#support-contact",function () {
+        var data = new FormData(this);
+        //console.log(this[1].value);
+        var form = this;
+        if(form[1].value != "" && form[1].value != null && form[2].value != "" && form[2].value != null && form[3].value != "" && form[3].value != null && form[4].value != "" && form[4].value != null && form[5].value != "" && form[5].value != null){
+            $.post(ajax_url + '/events',{'type':'support-contact','fullname':this[1].value,'email':this[2].value,'phone':this[3].value,'subject':this[4].value,'message':this[5].value},function (sonuc) {
+                $('body').append(sonuc);
+                form[1].value = "";
+                form[2].value = "";
+                form[3].value = "";
+                form[4].value = "";
+                form[5].value = "";
+                //console.log(sonuc);
+            });
+        }
+        else{
+            sweetalert('Hata','Lütfen tüm alanları doldurun!','error','Kapat');
+        }
+    })
+
+</script>
+<a class="contact-button" data-toggle="modal" data-target=".contact-modal">
+    <i class="icon-envelope icons"></i>
+</a>
+<div class="modal fade contact-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+            <form method="post" action="javascript:void(0);" name="submit" id="support-contact">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bize Ulaşın</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-primary" role="alert">
+                        Merhaba Öneri/Şikayet/Destek/Bilgi gibi konular için her zaman yardım etmeye hazırız.
+                        Buradaki formu doldurarak bizimle doğrudan bağlantı kurabilirsiniz.
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Ad Soyad:</label>
+                        <input type="text" class="form-control" name="fullname">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email:</label>
+                        <input type="email" class="form-control" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Telefon:</label>
+                        <input type="text" class="form-control" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Konu:</label>
+                        <input type="text" class="form-control" name="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Mesaj:</label>
+                        <textarea class="form-control" name="message"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-sm btn-success">Gönder</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Kapat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="assets/support/js/jquery.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js" integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.esm.min.js" integrity="sha384-sKZy8g2KJhBTFCD6cIg8d4EifJxaa8c/iYIERdeKorHWhAgZgQOfqOKMe3xBqye1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+</html>

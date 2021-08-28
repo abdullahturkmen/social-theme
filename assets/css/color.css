@@ -1,0 +1,462 @@
+/*
+Theme designed by Abdullah Turkmen
+*/
+body {
+  text-decoration: none;
+}
+body a {
+  text-decoration: none;
+}
+body.light {
+  background-color: #f8f8f8;
+  color: #3f3f3f;
+}
+body.light a {
+  color: #3f3f3f;
+}
+body.light section.navbar {
+  background: #fff;
+}
+body.light section.navbar .search-result-box .liveresult li {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light section.navbar .search-result-box .liveresult li a {
+  color: #3f3f3f;
+}
+body.light section.navbar .search-result-box .liveresult li:hover {
+  background: #f8f8f8;
+}
+body.light section.navbar .search-bar {
+  background: #f8f8f8;
+}
+body.light section.navbar .search-bar input[type=text] {
+  color: #3f3f3f;
+}
+body.light section.navbar #mobile-bar .mobile-with-search {
+  background: #fff;
+}
+body.light section.navbar #mobile-bar .mobile-with-search .search-bar {
+  background: #fff;
+}
+body.light section.content .swipe-sidebar a.swipe-sidebar-btn {
+  background: #f8f8f8;
+}
+body.light section.content .swipe-sidebar .scroll-content {
+  background: #fff;
+}
+body.light section.content .swipe-sidebar .scroll-content #swipe-sidebar-search-box {
+  background: #f8f8f8;
+  color: #3f3f3f;
+}
+body.light section.content .profile-header .user-detail {
+  background: #fff;
+}
+body.light section.content .user-settings-sidebar {
+  background: #fff;
+}
+body.light section.content .user-settings-sidebar nav a {
+  background: #f8f8f8;
+  color: #3f3f3f;
+}
+body.light section.content .user-settings-content {
+  background: #fff;
+}
+body.light section.content .user-settings-content .user-profile-setting form .form-group i {
+  color: #3f3f3f;
+}
+body.light section.content .user-settings-content .user-profile-setting form .form-group .form-control {
+  background: #f8f8f8;
+  color: #3f3f3f;
+}
+body.light section.content .owl-carousel .owl-nav button.owl-prev {
+  background-image: linear-gradient(to right, #f8f8f8, transparent);
+}
+body.light section.content .owl-carousel .owl-nav button.owl-next {
+  background-image: linear-gradient(to left, #f8f8f8, transparent);
+}
+body.light section.content .sharing .video-list {
+  background: #fff;
+}
+body.light section.content .explore .user-profile-details ul li {
+  background: #fff;
+}
+body.light section.content .explore .video-list .video-description {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light section.content .explore .video-list .video-description a {
+  color: #3f3f3f;
+}
+body.light section.content .single-video .shared-info {
+  background: #fff;
+}
+body.light section.content .single-video .video-detail .buttons a {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light section.content .single-video .video-comment-content .video-comment-send {
+  background: #f8f8f8;
+}
+body.light section.content .single-video .video-comment-content .video-comment-send .comment-box input[type=text] {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light section.content .single-video .video-comment-content .video-comment-send .comment-box a {
+  background: #f8f8f8;
+  color: #3f3f3f;
+}
+body.light section.content .video-upload .upload-content .dropzone {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light section.content .video-upload .upload-content .file-upload button.upload-btn {
+  background: #fff;
+}
+body.light section.content .video-upload .upload-content .file-upload button.upload-btn i {
+  color: #3f3f3f;
+}
+body.light section.content .video-upload .upload-content .file-upload button.upload-btn span {
+  color: #3f3f3f;
+}
+body.light section.content .video-upload .upload-content .file-description i {
+  color: #3f3f3f;
+}
+body.light section.content .video-upload .upload-content .file-description textarea {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light section.content .video-upload .upload-content .file-select .select-content i {
+  color: #3f3f3f;
+}
+body.light section.content .video-upload .upload-content .file-select .select-content select {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light section.content .sidebar .populer-videos h3 {
+  border-bottom: 1px solid #2b2b2b;
+}
+body.light section.login .login-content {
+  background: #fff;
+}
+body.light section.login .login-content ul.nav-tabs {
+  background: #f8f8f8;
+}
+body.light section.login .login-content ul.nav-tabs .nav-link.active {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light section.login .login-content form .form-content .form-input {
+  color: #3f3f3f;
+}
+body.light section.mobile-bar {
+  background: #fff;
+}
+body.light section.mobile-bar .shadow {
+  background: #f8f8f8;
+}
+body.light .user-modal ul {
+  background: #fff;
+}
+body.light .user-modal ul li a i {
+  background: #f8f8f8;
+}
+body.light .user-modal ul li a:hover {
+  background: #f8f8f8;
+}
+body.light .gear-modal ul {
+  background: #fff;
+}
+body.light .gear-modal ul li a:hover {
+  background: #f8f8f8;
+}
+body.light .info-modal ul {
+  background: #fff;
+}
+body.light .info-modal ul li a:hover {
+  background: #f8f8f8;
+}
+body.light .profile-modal ul {
+  background: #fff;
+}
+body.light .profile-modal ul li a:hover {
+  background: #f8f8f8;
+}
+body.light .video-modal .modal-content .container-fluid {
+  background: #fff;
+}
+body.light .video-modal .modal-content .container-fluid .video-popup-details .video-popup-scroll .video-comment-send {
+  background: #fff;
+}
+body.light .video-modal .modal-content .container-fluid .video-popup-details .video-popup-scroll .video-comment-send .comment-box input[type=text] {
+  background: #f8f8f8;
+  color: #3f3f3f;
+}
+body.light .video-modal .modal-content .container-fluid .video-popup-details .video-popup-scroll .video-comment-send .comment-box a {
+  background: #fff;
+  color: #3f3f3f;
+}
+body.light .notification-modal ul {
+  background: #fff;
+}
+body.light .notification-modal ul li a:hover {
+  background: #f8f8f8;
+}
+body.light .avatar-modal .modal-content, body.light .cover-modal .modal-content, body.light .email-modal .modal-content, body.light .password-modal .modal-content, body.light .gift-detail-modal .modal-content, body.light .video-detail-modal .modal-content {
+  background: #fff;
+}
+body.light .avatar-modal .modal-content .close, body.light .cover-modal .modal-content .close, body.light .email-modal .modal-content .close, body.light .password-modal .modal-content .close, body.light .gift-detail-modal .modal-content .close, body.light .video-detail-modal .modal-content .close {
+  color: #3f3f3f;
+}
+body.light .avatar-modal .modal-content .modal-body button.upload-btn, body.light .cover-modal .modal-content .modal-body button.upload-btn, body.light .email-modal .modal-content .modal-body button.upload-btn, body.light .password-modal .modal-content .modal-body button.upload-btn, body.light .gift-detail-modal .modal-content .modal-body button.upload-btn, body.light .video-detail-modal .modal-content .modal-body button.upload-btn {
+  background: #f8f8f8;
+}
+body.light .avatar-modal .modal-content .modal-body button.upload-btn i, body.light .cover-modal .modal-content .modal-body button.upload-btn i, body.light .email-modal .modal-content .modal-body button.upload-btn i, body.light .password-modal .modal-content .modal-body button.upload-btn i, body.light .gift-detail-modal .modal-content .modal-body button.upload-btn i, body.light .video-detail-modal .modal-content .modal-body button.upload-btn i {
+  color: #3f3f3f;
+}
+body.light .avatar-modal .modal-content .modal-body button.upload-btn span, body.light .cover-modal .modal-content .modal-body button.upload-btn span, body.light .email-modal .modal-content .modal-body button.upload-btn span, body.light .password-modal .modal-content .modal-body button.upload-btn span, body.light .gift-detail-modal .modal-content .modal-body button.upload-btn span, body.light .video-detail-modal .modal-content .modal-body button.upload-btn span {
+  color: #3f3f3f;
+}
+body.light .avatar-modal .modal-content .modal-body .form-control, body.light .cover-modal .modal-content .modal-body .form-control, body.light .email-modal .modal-content .modal-body .form-control, body.light .password-modal .modal-content .modal-body .form-control, body.light .gift-detail-modal .modal-content .modal-body .form-control, body.light .video-detail-modal .modal-content .modal-body .form-control {
+  background: #f8f8f8;
+  color: #3f3f3f;
+}
+body.dark {
+  background-color: #2b2b2b;
+  color: #f8f8f8;
+}
+body.dark a {
+  color: #f8f8f8;
+}
+body.dark section.navbar {
+  background: #3c3f41;
+}
+body.dark section.navbar .search-result-box .liveresult li {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.navbar .search-result-box .liveresult li a {
+  color: #f8f8f8;
+}
+body.dark section.navbar .search-result-box .liveresult li:hover {
+  background: #2b2b2b;
+}
+body.dark section.navbar .search-bar {
+  background: #2b2b2b;
+}
+body.dark section.navbar .search-bar input[type=text] {
+  color: #f8f8f8;
+}
+body.dark section.navbar #mobile-bar .mobile-with-search {
+  background: #3c3f41;
+}
+body.dark section.navbar #mobile-bar .mobile-with-search .search-bar {
+  background: #3c3f41;
+}
+body.dark section.navbar .btn-home img {
+  mix-blend-mode: screen;
+}
+body.dark section.content .swipe-sidebar a.swipe-sidebar-btn {
+  background: #2b2b2b;
+}
+body.dark section.content .swipe-sidebar .scroll-content {
+  background: #3c3f41;
+}
+body.dark section.content .swipe-sidebar .scroll-content #swipe-sidebar-search-box {
+  background: #2b2b2b;
+  color: #f8f8f8;
+}
+body.dark section.content .profile-header .user-detail {
+  background: #3c3f41;
+}
+body.dark section.content .user-settings-sidebar {
+  background: #3c3f41;
+}
+body.dark section.content .user-settings-sidebar nav a {
+  background: #2b2b2b;
+  color: #f8f8f8;
+}
+body.dark section.content .user-settings-content {
+  background: #3c3f41;
+}
+body.dark section.content .user-settings-content .user-profile-setting form .form-group i {
+  color: #f8f8f8;
+}
+body.dark section.content .user-settings-content .user-profile-setting form .form-group .form-control {
+  background: #2b2b2b;
+  color: #f8f8f8;
+}
+body.dark section.content .owl-carousel .owl-nav button.owl-prev {
+  background-image: linear-gradient(to right, #2b2b2b, transparent);
+}
+body.dark section.content .owl-carousel .owl-nav button.owl-next {
+  background-image: linear-gradient(to left, #2b2b2b, transparent);
+}
+body.dark section.content .sharing .video-list {
+  background: #3c3f41;
+}
+body.dark section.content .explore .user-profile-details ul li {
+  background: #3c3f41;
+}
+body.dark section.content .explore .video-list .video-description {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.content .explore .video-list .video-description a {
+  color: #f8f8f8;
+}
+body.dark section.content .single-video .shared-info {
+  background: #3c3f41;
+}
+body.dark section.content .single-video .video-detail .buttons a {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.content .single-video .video-comment-content .video-comment-send {
+  background: #2b2b2b;
+}
+body.dark section.content .single-video .video-comment-content .video-comment-send .comment-box input[type=text] {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.content .single-video .video-comment-content .video-comment-send .comment-box a {
+  background: #2b2b2b;
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .dropzone {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .file-upload button.upload-btn {
+  background: #3c3f41;
+}
+body.dark section.content .video-upload .upload-content .file-upload button.upload-btn i {
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .file-upload button.upload-btn span {
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .file-description i {
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .file-description textarea {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .file-select .select-content i {
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .file-select .select-content select {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .select2-container .select2-selection {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .select2-container .select2-selection__rendered {
+  color: #f8f8f8;
+}
+body.dark section.content .video-upload .upload-content .select2-container .select2-selection__arrow {
+  color: #f8f8f8;
+}
+body.dark section.content .sidebar .populer-videos h3 {
+  border-bottom: 1px solid #f8f8f8;
+}
+body.dark section.login .login-content {
+  background: #3c3f41;
+}
+body.dark section.login .login-content ul.nav-tabs {
+  background: #2b2b2b;
+}
+body.dark section.login .login-content ul.nav-tabs .nav-link.active {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark section.login .login-content form .form-content .form-input {
+  color: #f8f8f8;
+}
+body.dark section.mobile-bar {
+  background: #3c3f41;
+}
+body.dark section.mobile-bar .shadow {
+  background: #2b2b2b;
+}
+body.dark .user-modal ul {
+  background: #3c3f41;
+}
+body.dark .user-modal ul li a i {
+  background: #2b2b2b;
+}
+body.dark .user-modal ul li a:hover {
+  background: #2b2b2b;
+}
+body.dark .gear-modal ul {
+  background: #3c3f41;
+}
+body.dark .gear-modal ul li a:hover {
+  background: #2b2b2b;
+}
+body.dark .info-modal ul {
+  background: #3c3f41;
+}
+body.dark .info-modal ul li a:hover {
+  background: #2b2b2b;
+}
+body.dark .profile-modal ul {
+  background: #3c3f41;
+}
+body.dark .profile-modal ul li a:hover {
+  background: #2b2b2b;
+}
+body.dark .video-modal .modal-content .container-fluid {
+  background: #3c3f41;
+}
+body.dark .video-modal .modal-content .container-fluid .video-popup-details .video-popup-scroll .video-comment-send {
+  background: #3c3f41;
+}
+body.dark .video-modal .modal-content .container-fluid .video-popup-details .video-popup-scroll .video-comment-send .comment-box input[type=text] {
+  background: #2b2b2b;
+  color: #f8f8f8;
+}
+body.dark .video-modal .modal-content .container-fluid .video-popup-details .video-popup-scroll .video-comment-send .comment-box a {
+  background: #3c3f41;
+  color: #f8f8f8;
+}
+body.dark .notification-modal ul {
+  background: #3c3f41;
+}
+body.dark .notification-modal ul li a:hover {
+  background: #2b2b2b;
+}
+body.dark .avatar-modal .modal-content, body.dark .cover-modal .modal-content, body.dark .email-modal .modal-content, body.dark .password-modal .modal-content, body.dark .gift-detail-modal .modal-content, body.dark .video-detail-modal .modal-content {
+  background: #3c3f41;
+}
+body.dark .avatar-modal .modal-content .close, body.dark .cover-modal .modal-content .close, body.dark .email-modal .modal-content .close, body.dark .password-modal .modal-content .close, body.dark .gift-detail-modal .modal-content .close, body.dark .video-detail-modal .modal-content .close {
+  color: #f8f8f8;
+}
+body.dark .avatar-modal .modal-content .modal-body button.upload-btn, body.dark .cover-modal .modal-content .modal-body button.upload-btn, body.dark .email-modal .modal-content .modal-body button.upload-btn, body.dark .password-modal .modal-content .modal-body button.upload-btn, body.dark .gift-detail-modal .modal-content .modal-body button.upload-btn, body.dark .video-detail-modal .modal-content .modal-body button.upload-btn {
+  background: #2b2b2b;
+}
+body.dark .avatar-modal .modal-content .modal-body button.upload-btn i, body.dark .cover-modal .modal-content .modal-body button.upload-btn i, body.dark .email-modal .modal-content .modal-body button.upload-btn i, body.dark .password-modal .modal-content .modal-body button.upload-btn i, body.dark .gift-detail-modal .modal-content .modal-body button.upload-btn i, body.dark .video-detail-modal .modal-content .modal-body button.upload-btn i {
+  color: #f8f8f8;
+}
+body.dark .avatar-modal .modal-content .modal-body button.upload-btn span, body.dark .cover-modal .modal-content .modal-body button.upload-btn span, body.dark .email-modal .modal-content .modal-body button.upload-btn span, body.dark .password-modal .modal-content .modal-body button.upload-btn span, body.dark .gift-detail-modal .modal-content .modal-body button.upload-btn span, body.dark .video-detail-modal .modal-content .modal-body button.upload-btn span {
+  color: #f8f8f8;
+}
+body.dark .avatar-modal .modal-content .modal-body .form-control, body.dark .cover-modal .modal-content .modal-body .form-control, body.dark .email-modal .modal-content .modal-body .form-control, body.dark .password-modal .modal-content .modal-body .form-control, body.dark .gift-detail-modal .modal-content .modal-body .form-control, body.dark .video-detail-modal .modal-content .modal-body .form-control {
+  background: #2b2b2b;
+  color: #f8f8f8;
+}
+body.dark .select2-container .select2-dropdown {
+  background-color: #3c3f41 !important;
+  color: #f8f8f8;
+}
+body .user-modal ul li #darklight button.dark {
+  background: #3c3f41;
+}
+body .user-modal ul li #darklight button.light {
+  background: #fff;
+}
+
+/*# sourceMappingURL=color.css.map */

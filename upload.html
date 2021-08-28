@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>Video Paylaş | Social Theme</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1">
+    <link rel="stylesheet" href="assets/css/color.css?v=1.0.4">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.0.6">
+    <link rel="stylesheet" href="assets/css/introjs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/simplelineicons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+    <script>var ajax_url = 'ajax';</script>
+    <script src="assets/plugins/dropzone/dropzone.js"></script>
+    <link href="assets/plugins/dropzone/dropzone.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        form#gonder{
+            display: none;
+        }
+        button#btn-send{
+            display: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+            $('#universities').change(function () {
+                $("#universities").addClass('slctd');
+                var university_id = $(this)[0].value;
+                $.post(ajax_url + '/events',{'type':'universities','university_id':university_id},function (sonuc) {
+                    $('#faculties').html(sonuc);
+                })
+            })
+
+            $('#faculties').change(function () {
+                $("#faculties").addClass('slctd');
+                var faculty_id = $(this)[0].value;
+                var university_id = $(this)[0].selectedOptions[0].id;
+                $.post(ajax_url + '/events',{'type':'faculties','university_id':university_id,'faculty_id':faculty_id},function (sonuc) {
+                    $('#departments').html(sonuc);
+                })
+            });
+
+            $('#departments').change(function () {
+                $("#departments").addClass('slctd');
+            });
+
+            $('#categories').change(function () {
+                $("#categories").addClass('slctd');
+            });
+
+
+            $("#video-upload-loader").hide();
+            $("input[type=file]").on('change',function(){
+                //$('.upload-btn').addClass('active');
+                //$('.upload-btn')[0].children[1].innerHTML = 'Dosya Seçildi!';
+            });
+        });
+
+        $(document).on("submit","form#gonder",function () {
+            var data = new FormData(this);
+            //console.log(this);
+            $.ajax({
+                url: ajax_url + '/video',
+                data: data,
+                contentType: false,
+                processData: false,
+                type: "POST",
+                beforeSend: function () {
+                    $("#video-upload-loader").show();
+                    $('#btn-send').hide();
+                },
+                success: function (sonuc) {
+                    //console.log(sonuc);
+                    $("input[type='file']").val("");
+                    //$("textarea").val("");
+                    //$("#universities").val("0");
+                    //$("#faculties").val("0");
+                    //$("#departments").val("0");
+                    //$("#categories").val("0");
+                    $('body').append(sonuc);
+                    $("#video-upload-loader").hide();
+                    //$('.upload-btn').removeClass('active');
+                    //$('.upload-btn')[0].children[1].innerHTML = 'Okulun hakkında bir video paylaş!';
+                    $('#btn-send').show();
+                }
+            })
+        });
+
+
+    </script>
+</head>
+<body class="dark">
+<section class="navbar fixed-top">
+    <div class="container-fluid">
+        <div class="col-12 search-box">
+            <div class="row d-none d-md-flex">
+                <div class="col-3">
+                    <a href="index.html" class="btn-home"><img src="assets/images/logo.png"></a>
+                </div>
+                <div class="col-5">
+                    <div class="search-bar header_search_form">
+                        <i class="icon-magnifier icons"></i>
+                        <input autocomplete="off" name="s" type="text" placeholder="Ara" />
+                    </div>
+                </div>
+                <div class="col-4">
+                    <ul class="user-menu">
+                        <li><a href="#"><i class="icon-present icons" title="Çekiliş"><span class="notification-dot"></span></i></a></li>
+                        <li><a href="videos.html"><i class="icon-control-play icons" data-placement="top" data-toggle="tooltip" title="Video topluluğu"></i></a></li>
+                        <li><a data-toggle="modal" data-target=".notification-modal" onclick="notificationReset();"><i class="icon-bell icons" data-placement="top" data-toggle="tooltip" title="Bildirimler"></i>
+                        </a></li>
+                        <li><a href="upload.html"><i class="icon-camrecorder icons" data-placement="top" data-toggle="tooltip" title="Sen de anlat"></i></a></li>
+                        <li><a data-toggle="modal" data-target=".bd-user-modal-sm">
+                            <img src="assets/images/user/avatar.png" id="avatarPreviewNavbar">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row d-md-none" id="mobile-bar">
+                <div class="mobile-without-search">
+                    <div class="col-5">
+                        <a href="index.html" class="btn-home"><img src="assets/images/logo.png"></a>
+                    </div>
+                    <div class="col-7">
+                        <ul class="user-menu">
+                            <li><a href="#"><i class="icon-present icons" title="Çekiliş"><span class="notification-dot"></span></i></a></li>
+                            <li><a href="upload"><i class="icon-camrecorder icons"></i></a></li>
+                            <li><a class="mobile-search-open" v-on:click="showMobileMenu = !showMobileMenu"><i class="icon-magnifier icons"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mobile-with-search" v-bind:class="{ active: showMobileMenu }">
+                    <div class="search-bar header_search_form">
+                        <i class="icon-magnifier icons"></i>
+                        <input autocomplete="off" name="s" type="text" placeholder="Ara" id="mobile-search-input" />
+                    </div>
+                    <a v-on:click="showMobileMenu = !showMobileMenu"><i class="icon-close icons"></i></a>
+                </div>
+            </div>
+            <div class="search-result-box col-12 col-md-6">
+                <ul class="list-group liveresult"></ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container">
+        <div class="col-md-10 col-lg-8 col-12 offset-md-1 offset-lg-2">
+            <div class="row">
+                <div class="col-12 video-upload">
+                    <div id="video-upload-loader"><img src="assets/images/loading.gif"></div>
+                    <div class="row">
+                        <div class="upload-content">
+                            <form action="ajax/video" class="dropzone" id="my-awesome-dropzone">
+                            </form>
+                            <form action="javascript:void(0);" method="post" enctype="multipart/form-data" id="gonder">
+                                <div class="col-12 file-description form-group">
+                                    <i class="icon-question icon"></i>
+                                    <textarea class="form-control" placeholder="Bu Video Ne Hakkında?" name="description"></textarea>
+                                </div>
+                                <div class="col-12 file-select form-group">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-4 select-content">
+                                            <i class="icon-graduation icons"></i>
+                                            <select class="form-control js-example-basic-single" id="universities" name="university_id">
+                                                <option value="0" disabled="disabled" selected="selected">Üniversite Seç</option>
+                                                <option value="569">Abay Devlet Üniversitesi</option>
+                                                <option value="64">Abdullah Gül Üniversitesi</option>
+                                                <option value="125">Acıbadem Mehmet Ali Aydınlar Üniversitesi</option>
+                                                <option value="103">Adana Alparslan Türkeş Bilim Ve Teknoloji Üniversitesi</option>
+                                                <option value="2">Adıyaman Üniversitesi</option>
+                                                <option value="4">Afyon Kocatepe Üniversitesi</option>
+                                                <option value="122">Afyonkarahisar Sağlık Bilimleri Üniversitesi</option>
+                                                <option value="5">Ağrı Ibrahim Çeçen Üniversitesi</option>
+                                                <option value="7">Akdeniz Üniversitesi</option>
+                                                <option value="8">Aksaray Üniversitesi</option>
+                                                <option value="104">Alanya Alaaddin Keykubat Üniversitesi</option>
+                                                <option value="177">Alanya Hamdullah Emin Paşa Üniversitesi</option>
+                                                <option value="148">Altınbaş Üniversitesi</option>
+                                                <option value="9">Amasya Üniversitesi</option>
+                                                <option value="10">Anadolu Üniversitesi</option>
+                                                <option value="560">Anka Teknoloji Üniversitesi</option>
+                                                <option value="115">Ankara Hacı Bayram Veli Üniversitesi</option>
+                                                <option value="192">Ankara Medipol Üniversitesi</option>
+                                                <option value="557">Ankara Müzik Ve Güzel Sanatlar Üniversitesi</option>
+                                                <option value="107">Ankara Sosyal Bilimler Üniversitesi</option>
+                                                <option value="11">Ankara Üniversitesi</option>
+                                                <option value="99">Ankara Yıldırım Beyazıt Üniversitesi</option>
+                                                <option value="186">Antalya Akev Üniversitesi</option>
+                                                <option value="174">Antalya Bilim Üniversitesi</option>
+                                                <option value="12">Ardahan Üniversitesi</option>
+                                                <option value="13">Artvin Çoruh Üniversitesi</option>
+                                                <option value="556">Ataşehir Adıgüzel Meslek Yüksekokulu </option>
+                                                <option value="14">Atatürk Üniversitesi</option>
+                                                <option value="126">Atılım Üniversitesi</option>
+                                                <option value="562">Atlas Üniversitesi</option>
+                                                <option value="127">Avrasya Üniversitesi</option>
+                                                <option value="3">Aydın Adnan Menderes Üniversitesi</option>
+                                                <option value="566">Azerbaycan Devlet Beden Terbiyesi
+                                                    Enstitüsü</option>
+                                                <option value="204">Azerbaycan Devlet Iktisat Üniversitesi</option>
+                                                <option value="205">Azerbaycan Devlet Medeniyet Ve Ince Sanat Üniversitesi</option>
+                                                <option value="206">Azerbaycan Devlet Pedagoji Üniversitesi</option>
+                                                <option value="207">Azerbaycan Diller Üniversitesi</option>
+                                                <option value="208">Azerbaycan Mimarlık Ve Inşaat Üniversitesi</option>
+                                                <option value="209">Azerbaycan Tıp Üniversitesi</option>
+                                                <option value="128">Bahçeşehir Üniversitesi</option>
+                                                <option value="210">Bakü Devlet Üniversitesi</option>
+                                                <option value="211">Bakü Slavyan Üniversitesi</option>
+                                                <option value="15">Balıkesir Üniversitesi</option>
+                                                <option value="105">Bandırma Onyedi Eylül Üniversitesi</option>
+                                                <option value="16">Bartın Üniversitesi</option>
+                                                <option value="129">Başkent Üniversitesi</option>
+                                                <option value="17">Batman Üniversitesi</option>
+                                                <option value="18">Bayburt Üniversitesi</option>
+                                                <option value="130">Beykent Üniversitesi</option>
+                                                <option value="131">Beykoz Üniversitesi</option>
+                                                <option value="132">Bezm-I Âlem Vakıf Üniversitesi</option>
+                                                <option value="19">Bilecik Şeyh Edebali Üniversitesi</option>
+                                                <option value="20">Bingöl Üniversitesi</option>
+                                                <option value="180">Biruni Üniversitesi</option>
+                                                <option value="21">Bitlis Eren Üniversitesi</option>
+                                                <option value="22">Boğaziçi Üniversitesi</option>
+                                                <option value="1">Bolu Abant Izzet Baysal Üniversitesi</option>
+                                                <option value="72">Burdur Mehmet Akif Ersoy Üniversitesi</option>
+                                                <option value="24">Bursa Teknik Üniversitesi</option>
+                                                <option value="96">Bursa Uludağ Üniversitesi</option>
+                                                <option value="133">Çağ Üniversitesi</option>
+                                                <option value="27">Çanakkale Onsekiz Mart Üniversitesi</option>
+                                                <option value="134">Çankaya Üniversitesi</option>
+                                                <option value="28">Çankırı Karatekin Üniversitesi</option>
+                                                <option value="29">Çukurova Üniversitesi</option>
+                                                <option value="146">Demiroğlu Bilim Üniversitesi</option>
+                                                <option value="30">Dicle Üniversitesi</option>
+                                                <option value="193">Doğu Akdeniz Üniversitesi</option>
+                                                <option value="135">Doğuş Üniversitesi</option>
+                                                <option value="31">Dokuz Eylül Üniversitesi</option>
+                                                <option value="33">Düzce Üniversitesi</option>
+                                                <option value="34">Ege Üniversitesi</option>
+                                                <option value="35">Erciyes Üniversitesi</option>
+                                                <option value="36">Erzincan Binali Yıldırım Üniversitesi</option>
+                                                <option value="37">Erzurum Teknik Üniversitesi</option>
+                                                <option value="38">Eskişehir Osmangazi Üniversitesi</option>
+                                                <option value="120">Eskişehir Teknik Üniversitesi</option>
+                                                <option value="553">Faruk Saraç Tasarım Meslek Yüksekokulu </option>
+                                                <option value="136">Fatih Sultan Mehmet Vakıf Üniversitesi</option>
+                                                <option value="565">Fatih Üniversitesi</option>
+                                                <option value="190">Fenerbahçe Üniversitesi</option>
+                                                <option value="39">Fırat Üniversitesi</option>
+                                                <option value="40">Galatasaray Üniversitesi</option>
+                                                <option value="41">Gazi Üniversitesi</option>
+                                                <option value="110">Gaziantep Islam Bilim Ve Teknoloji Üniversitesi</option>
+                                                <option value="42">Gaziantep Üniversitesi</option>
+                                                <option value="44">Gebze Teknik Üniversitesi</option>
+                                                <option value="45">Giresun Üniversitesi</option>
+                                                <option value="194">Girne Amerikan Üniversitesi</option>
+                                                <option value="198">Girne Üniversitesi</option>
+                                                <option value="46">Gümüşhane Üniversitesi</option>
+                                                <option value="568">Gürcistan Devlet Spor Akademisi</option>
+                                                <option value="47">Hacettepe Üniversitesi</option>
+                                                <option value="48">Hakkari Üniversitesi</option>
+                                                <option value="139">Haliç Üniversitesi</option>
+                                                <option value="49">Harran Üniversitesi</option>
+                                                <option value="137">Hasan Kalyoncu Üniversitesi</option>
+                                                <option value="76">Hatay Mustafa Kemal Üniversitesi</option>
+                                                <option value="50">Hitit Üniversitesi</option>
+                                                <option value="212">Hoca Ahmet Yesevi Uluslararası Türk-Kazak Üniversitesi</option>
+                                                <option value="187">Ibn Haldun Üniversitesi</option>
+                                                <option value="51">Iğdır Üniversitesi</option>
+                                                <option value="141">Ihsan Doğramacı Bilkent Üniversitesi</option>
+                                                <option value="52">Inönü Üniversitesi</option>
+                                                <option value="140">Işık Üniversitesi</option>
+                                                <option value="106">Iskenderun Teknik Üniversitesi</option>
+                                                <option value="121">Isparta Uygulamalı Bilimler Üniversitesi</option>
+                                                <option value="142">Istanbul 29 Mayıs Üniversitesi</option>
+                                                <option value="143">Istanbul Arel Üniversitesi</option>
+                                                <option value="144">Istanbul Aydın Üniversitesi</option>
+                                                <option value="165">Istanbul Ayvansaray Üniversitesi</option>
+                                                <option value="145">Istanbul Bilgi Üniversitesi</option>
+                                                <option value="179">Istanbul Esenyurt Üniversitesi</option>
+                                                <option value="138">Istanbul Gedik Üniversitesi</option>
+                                                <option value="147">Istanbul Gelişim Üniversitesi</option>
+                                                <option value="188">Istanbul Kent Üniversitesi</option>
+                                                <option value="149">Istanbul Kültür Üniversitesi</option>
+                                                <option value="53">Istanbul Medeniyet Üniversitesi</option>
+                                                <option value="150">Istanbul Medipol Üniversitesi</option>
+                                                <option value="162">Istanbul Okan Üniversitesi</option>
+                                                <option value="183">Istanbul Rumeli Üniversitesi</option>
+                                                <option value="151">Istanbul Sabahattin Zaim Üniversitesi</option>
+                                                <option value="152">Istanbul Şehir Üniversitesi</option>
+                                                <option value="555">Istanbul Şişli Meslek Yüksekokulu</option>
+                                                <option value="54">Istanbul Teknik Üniversitesi</option>
+                                                <option value="153">Istanbul Ticaret Üniversitesi</option>
+                                                <option value="55">Istanbul Üniversitesi</option>
+                                                <option value="114">Istanbul Üniversitesi-Cerrahpaşa</option>
+                                                <option value="173">Istanbul Yeni Yüzyıl Üniversitesi </option>
+                                                <option value="185">Istinye Üniversitesi</option>
+                                                <option value="213">Ivane Javakhishvili Tiflis Devlet Üniversitesi</option>
+                                                <option value="124">Izmir Bakırçay Üniversitesi</option>
+                                                <option value="109">Izmir Demokrasi Üniversitesi</option>
+                                                <option value="154">Izmir Ekonomi Üniversitesi</option>
+                                                <option value="56">Izmir Katip Çelebi Üniversitesi</option>
+                                                <option value="554">Izmir Kavram Meslek Yüksekokulu</option>
+                                                <option value="57">Izmir Yüksek Teknoloji Enstitüsü</option>
+                                                <option value="155">Kadir Has Üniversitesi</option>
+                                                <option value="58">Kafkas Üniversitesi</option>
+                                                <option value="551">Kahramanmaraş Istiklal Üniversitesi</option>
+                                                <option value="59">Kahramanmaraş Sütçü Imam Üniversitesi</option>
+                                                <option value="156">Kapadokya Üniversitesi</option>
+                                                <option value="60">Karabük Üniversitesi</option>
+                                                <option value="61">Karadeniz Teknik Üniversitesi</option>
+                                                <option value="62">Karamanoğlu Mehmetbey Üniversitesi</option>
+                                                <option value="63">Kastamonu Üniversitesi</option>
+                                                <option value="119">Kayseri Üniversitesi</option>
+                                                <option value="200">Kıbrıs Amerikan Üniversitesi</option>
+                                                <option value="199">Kıbrıs Ilim Üniversitesi</option>
+                                                <option value="202">Kıbrıs Sağlık Ve Toplum Bilimleri Üniversitesi</option>
+                                                <option value="201">Kıbrıs Sosyal Bilimler Üniversitesi</option>
+                                                <option value="67">Kilis 7 Aralık Üniversitesi</option>
+                                                <option value="214">Kırgızistan-Türkiye Manas Üniversitesi</option>
+                                                <option value="65">Kırıkkale Üniversitesi</option>
+                                                <option value="66">Kırklareli Üniversitesi</option>
+                                                <option value="6">Kırşehir Ahi Evran Üniversitesi</option>
+                                                <option value="157">Koç Üniversitesi</option>
+                                                <option value="561">Kocaeli Sağlık Ve Teknoloji Üniversitesi</option>
+                                                <option value="68">Kocaeli Üniversitesi</option>
+                                                <option value="215">Komrat Devlet Üniversitesi</option>
+                                                <option value="184">Konya Gıda Ve Tarım Üniversitesi</option>
+                                                <option value="111">Konya Teknik Üniversitesi</option>
+                                                <option value="158">Kto Karatay Üniversitesi</option>
+                                                <option value="32">Kütahya Dumlupınar Üniversitesi</option>
+                                                <option value="112">Kütahya Sağlık Bilimleri Üniversitesi</option>
+                                                <option value="195">Lefke Avrupa Üniversitesi</option>
+                                                <option value="189">Lokman Hekim Üniversitesi</option>
+                                                <option value="113">Malatya Turgut Özal Üniversitesi</option>
+                                                <option value="159">Maltepe Üniversitesi</option>
+                                                <option value="25">Manisa Celâl Bayar Üniversitesi </option>
+                                                <option value="70">Mardin Artuklu Üniversitesi</option>
+                                                <option value="71">Marmara Üniversitesi</option>
+                                                <option value="178">Mef Üniversitesi</option>
+                                                <option value="73">Mersin Üniversitesi</option>
+                                                <option value="74">Mimar Sinan Güzel Sanatlar Üniversitesi</option>
+                                                <option value="75">Muğla Sıtkı Koçman Üniversitesi</option>
+                                                <option value="94">Munzur Üniversitesi</option>
+                                                <option value="77">Muş Alparslan Üniversitesi</option>
+                                                <option value="216">Nahcivan Devlet Üniversitesi</option>
+                                                <option value="69">Necmettin Erbakan Üniversitesi</option>
+                                                <option value="79">Nevşehir Hacı Bektaş Veli Üniversitesi</option>
+                                                <option value="80">Niğde Ömer Halisdemir Üniversitesi</option>
+                                                <option value="160">Nişantaşı Üniversitesi</option>
+                                                <option value="161">Nuh Naci Yazgan Üniversitesi</option>
+                                                <option value="221">Odlar Yurdu Üniversitesi</option>
+                                                <option value="81">Ondokuz Mayıs Üniversitesi</option>
+                                                <option value="82">Ordu Üniversitesi</option>
+                                                <option value="83">Orta Doğu Teknik Üniversitesi</option>
+                                                <option value="84">Osmaniye Korkut Ata Üniversitesi</option>
+                                                <option value="191">Ostim Teknik Üniversitesi</option>
+                                                <option value="163">Özyeğin Üniversitesi</option>
+                                                <option value="85">Pamukkale Üniversitesi</option>
+                                                <option value="164">Piri Reis Üniversitesi</option>
+                                                <option value="86">Recep Tayyip Erdoğan Üniversitesi</option>
+                                                <option value="166">Sabancı Üniversitesi</option>
+                                                <option value="108">Sağlık Bilimleri Üniversitesi</option>
+                                                <option value="87">Sakarya Üniversitesi</option>
+                                                <option value="116">Sakarya Uygulamalı Bilimler Üniversitesi</option>
+                                                <option value="123">Samsun Üniversitesi</option>
+                                                <option value="181">Sanko Üniversitesi</option>
+                                                <option value="88">Selçuk Üniversitesi</option>
+                                                <option value="89">Siirt Üniversitesi</option>
+                                                <option value="90">Sinop Üniversitesi</option>
+                                                <option value="92">Şırnak Üniversitesi</option>
+                                                <option value="558">Sivas Bilim Ve Teknoloji Üniversitesi</option>
+                                                <option value="26">Sivas Cumhuriyet Üniversitesi</option>
+                                                <option value="218">Şota Rustaveli Devlet Üniversitesi</option>
+                                                <option value="91">Süleyman Demirel Üniversitesi</option>
+                                                <option value="217">Sumgayıt Devlet Üniversitesi</option>
+                                                <option value="117">Tarsus Üniversitesi</option>
+                                                <option value="176">Ted Üniversitesi</option>
+                                                <option value="78">Tekirdağ Namık Kemal Üniversitesi</option>
+                                                <option value="563">Tınaztepe Üniversitesi</option>
+                                                <option value="167">Tobb Ekonomi Ve Teknoloji Üniversitesi</option>
+                                                <option value="43">Tokat Gaziosmanpaşa Üniversitesi</option>
+                                                <option value="168">Toros Üniversitesi</option>
+                                                <option value="118">Trabzon Üniversitesi</option>
+                                                <option value="93">Trakya Üniversitesi</option>
+                                                <option value="169">Türk Hava Kurumu Üniversitesi</option>
+                                                <option value="559">Türk Japon Üniversitesi</option>
+                                                <option value="95">Türk-Alman Üniversitesi</option>
+                                                <option value="170">Ufuk Üniversitesi</option>
+                                                <option value="220">Uluslararası Balkan Üniversitesi</option>
+                                                <option value="203">Uluslararası Final Üniversitesi</option>
+                                                <option value="196">Uluslararası Kıbrıs Üniversitesi</option>
+                                                <option value="219">Uluslararası Saraybosna Üniversitesi</option>
+                                                <option value="97">Uşak Üniversitesi</option>
+                                                <option value="175">Üsküdar Üniversitesi</option>
+                                                <option value="101">Van Yüzüncü Yıl Üniversitesi </option>
+                                                <option value="197">Yakın Doğu Üniversitesi</option>
+                                                <option value="98">Yalova Üniversitesi</option>
+                                                <option value="171">Yaşar Üniversitesi</option>
+                                                <option value="172">Yeditepe Üniversitesi</option>
+                                                <option value="100">Yıldız Teknik Üniversitesi</option>
+                                                <option value="23">Yozgat Bozok Üniversitesi</option>
+                                                <option value="182">Yüksek Ihtisas Üniversitesi</option>
+                                                <option value="567">Zagreb Üniversitesi
+                                                </option>
+                                                <option value="102">Zonguldak Bülent Ecevit Üniversitesi</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-4 select-content">
+                                            <i class="icon-graduation icons"></i>
+                                            <select class="form-control js-example-basic-single" id="faculties" name="faculty_id">
+                                                <option value="0" disabled="disabled" selected="selected">Fakülte Seç</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-4 select-content">
+                                            <i class="icon-graduation icons"></i>
+                                            <select class="form-control js-example-basic-single" id="departments" name="department_id">
+                                                <option value="0" disabled="disabled" selected="selected">Bölüm Seç</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-6 select-content">
+                                            <i class="icon-support icons"></i>
+                                            <select class="form-control" id="categories" name="category_id">
+                                                <option value="0" disabled="disabled" selected="selected">Kategori Seç</option>
+                                                <option value="1">Eğitim</option>
+                                                <option value="7">Diğer</option>
+                                                <option value="2">Ortam</option>
+                                                <option value="3">Kalite</option>
+                                                <option value="4">Ulaşım</option>
+                                                <option value="5">Eğitimciler</option>
+                                                <option value="6">İmkanlar</option>
+                                                <option value="8">Değişim Prog.</option>
+                                                <option value="9">Kariyer</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-6 select-content">
+                                            <i class="icon-present icons"></i>
+                                            <select class="form-control" id="#" name="gift_id">
+                                                <option value="0" disabled="disabled" selected="selected">Çekiliş Ürünü Seç</option>
+                                                <option value="7">İsminize Özel Ajanda ve Kalem Seti</option>
+                                                <option value="6">Çelik Termos Bardak</option>
+                                                <option value="5">Xiaomi Redmi Airdots Bluetooth Kulaklık</option>
+                                                <option value="8">Lion Powerbank 10000 mAh </option>
+                                                <option value="9">Listeden Seçilmiş 1 Adet Okuma Kitabı</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="btn-send">Paylaş</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    Dropzone.options.myAwesomeDropzone = {
+        dictDefaultMessage: "Bir video seçiniz",
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 1024, // MB
+        timeout:999999999999,
+        parallelUploads:1,
+        acceptedFiles: "video/mp4,video/x-m4v,video/*",
+        maxFiles:1,
+        uploadMultiple:false,
+        init: function () {
+            this.on("error", function (file, message) {
+                //sweetalert("Hata","Sadece 1 video eklenebilir. Bunu paylaştıktan sonra yeni bir video ekleme yapabilirsiniz!","error","Kapat");
+                //this.removeFile(file);
+            });
+            this.on("addedfile", function () {
+                $('form#gonder').show();
+            });
+            this.on("complete", function (file) {
+                $('button#btn-send').show();
+            });
+        }
+    };
+
+</script>
+<section class="footer">
+    <div class="container pt-3 pb-5">
+        <div class="col-md-10 col-lg-8 col-12 offset-md-1 offset-lg-2">
+            <div class="row">
+                <nav class="nav d-flex">
+                    <a class="p-2" href="support.html">Social Theme</a>
+                    <a class="d-none p-2" href="">Bölümler</a>
+                    <a class="p-2" href="about-us.html">Hakkımızda</a>
+                    <a class="p-2" href="privacy.html">Gizlilik Politikası</a>
+                    <a class="p-2" href="#">Kullanım Koşulları</a>
+                    <a class="p-2" href="faq.html">SSS</a>
+                    <a class="p-2" href="contact.html">Bilgi Merkezi</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mobile-bar d-md-none">
+    <div class="container">
+        <div id="menu-list">
+            <div class="list-item"><a href=""><i class="icon-home icons"></i><div class="list-item-title">Anasayfa</div></a></div>
+            <div class="list-item"><a href="videos.html"><i class="icon-control-play icons"></i><div class="list-item-title">İzle</div></a></div>
+            <div class="list-item"><a data-toggle="modal" data-target=".notification-modal" onclick="notificationReset();"><i class="icon-bell icons"></i><div class="list-item-title">Bildirimler</div>
+            </a></div>
+            <div class="list-item"><a data-toggle="modal" data-target=".bd-user-modal-sm">
+                <img src="assets/images/user/avatar.png" id="avatarPreviewMobile">
+                <div class="list-item-title">Profil</div>
+            </a></div>
+            <div class="shadow d-none"></div>
+        </div>
+    </div>
+</section>
+<div class="modal fade bd-user-modal-sm user-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><a href="user.html"><i class="icon-user icons"></i> Profilim</a></li>
+                <li><a href="settings.html"><i class="icon-settings icons"></i> Ayarlar</a></li>
+                <li>
+                    <div id="darklight">
+                        <span>Gece modu: </span>
+                        <button class="dark" @click="toggleBodyClass('addClass', 'dark')"></button>
+                        <button class="light" @click="toggleBodyClass('addClass', 'light')"></button>
+                    </div>
+                </li>
+                <li><a hre="login.html"><i class="icon-power icons"></i> Çıkış Yap</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-gear-modal-sm gear-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><a href=""><i class="icon-pin icons"></i> Kaydet</a></li>
+                <li><a onclick="clickCopy()"><i class="icon-link icons"></i> Bağlantıyı Kopyala</a></li>
+                <li><a href=""><i class="icon-exclamation icons"></i> Şikayet Et</a></li>
+            </ul>
+        </div>
+        <input type="text" id="urlcopy" value="xxx111">
+    </div>
+</div>
+<div class="modal fade video-modal" id="video-popup" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-8 video-popup-frame">
+                        <video autoplay loop="true" id="autoplay" class="video-js vjs-styles-dimensions vjs-big-play-centered vjs-16-9" controls preload="auto" width="640" height="264" poster="" data-setup="{}" controlsList="nodownload">
+                            <source src="" type="video/mp4" />
+                        </video>
+                        <p id="video-id" style="display: none"></p>
+                    </div>
+                    <div class="col-12 col-lg-4 video-popup-details">
+                        <a class="info-modal-btn" href="" data-toggle="modal" data-target=".info-modal"><i class="icon-info icons"></i></a>
+                        <div class="video-popup-scroll">
+                            <div class="video-shared">
+                                <a href="">
+                                    <img src="assets/images/user/avatar.png">
+                                </a>
+                                <a href="">
+                                    <span>username</span>
+                                </a>
+                                <span class="shared-time"> • 2 saat</span>
+                                <p>Video açıklama metin alanı</p>
+                            </div>
+                            <div class="video-comment-list">
+                                <ul>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 1</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Video bilgilendirici olmuş</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 2</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Güzel video</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="video-comment">
+                                            <a href="">
+                                                <img src="assets/images/user/avatar.png">
+                                            </a>
+                                            <a href="">
+                                                <span>kullanıcı 3</span>
+                                            </a>
+                                            <span class="shared-time"> • 2 saat</span>
+                                            <p>Açıklama işe yarar</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="video-comment-send">
+                                <form action="" method="post">
+                                    <div class="comment-box">
+                                        <a href="">Gönder</a>
+                                        <input type="text" placeholder="Yorum yap">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade notification-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <ul>
+                <li><i class="icon-exclamation"></i> Yeni bildirim bulunmamakta</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(myfunction);
+    $(window).on('resize',myfunction);
+
+    function myfunction(){
+        var width = $(".owl-item .item img").width();
+        $(".owl-item .item img").height(width);
+    };
+
+</script>
+<div id="loader-div">
+    <img src="assets/images/loading.gif">
+</div>
+<script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="assets/js/vue.js"></script>
+<script src="assets/js/jquery.js?v=1.0.3"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js" integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.esm.min.js" integrity="sha384-sKZy8g2KJhBTFCD6cIg8d4EifJxaa8c/iYIERdeKorHWhAgZgQOfqOKMe3xBqye1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.min.js" integrity="sha512-n9OoMZw+LpkURqH5ODKhxjs08ZI97Pi4pIxEnqz2mHhzZmjW7UeOm/0+lvSjQ6lepdpGkPA7L8chC0UtUbXxZg==" crossorigin="anonymous"></script>
+<script src="assets/js/intro.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
+</body>
+</html>

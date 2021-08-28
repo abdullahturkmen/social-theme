@@ -1,0 +1,779 @@
+/*
+Theme designed by Abdullah Turkmen
+*/
+
+$bg-dark: #2b2b2b;
+$bg-light: #f8f8f8;
+$bg-dark-section: #3c3f41;
+$bg-light-section: #fff;
+$color-light: #3f3f3f;
+$color-dark: #f8f8f8;
+body {
+  text-decoration: none;
+
+  a {
+    text-decoration: none;
+  }
+
+  &.light {
+    background-color: $bg-light;
+    color: $color-light;
+
+    a {
+      color: $color-light;
+    }
+
+    section.navbar {
+      background: $bg-light-section;
+
+      .search-result-box{
+        .liveresult{
+          li{
+            background: $bg-light-section;
+            color: $color-light;
+            a{
+              color: $color-light;
+            }
+            &:hover{
+              background: $bg-light;
+            }
+          }
+        }
+      }
+
+      .search-bar {
+        background: $bg-light;
+        input[type="text"] {
+          color: $color-light;
+        }
+      }
+
+      #mobile-bar {
+        .mobile-with-search {
+          background: $bg-light-section;
+
+          .search-bar {
+            background: $bg-light-section;
+          }
+        }
+      }
+    }
+
+    section.content {
+      .swipe-sidebar{
+        a.swipe-sidebar-btn{
+          background:$bg-light;
+        }
+        .scroll-content{
+          background:$bg-light-section;
+          #swipe-sidebar-search-box{
+            background:$bg-light;
+            color:$color-light;
+          }
+        }
+      }
+
+      .profile-header{
+        .user-detail{
+          background:$bg-light-section;
+        }
+      }
+
+      .user-settings-sidebar{
+        background:$bg-light-section;
+        nav{
+          a{
+            background:$bg-light;
+            color: $color-light;
+          }
+        }
+      }
+
+      .user-settings-content{
+        background:$bg-light-section;
+        .user-profile-setting{
+          form {
+            .form-group {
+              i{
+                color: $color-light;
+              }
+              .form-control{
+                background:$bg-light;
+                color: $color-light;
+              }
+            }
+          }
+        }
+      }
+
+      .owl-carousel {
+        .owl-nav {
+          button.owl-prev {
+            background-image: linear-gradient(to right, $bg-light, transparent);
+          }
+
+          button.owl-next {
+            background-image: linear-gradient(to left, $bg-light, transparent);
+          }
+        }
+      }
+
+      .sharing {
+        .video-list {
+          background: $bg-light-section;
+        }
+      }
+
+      .explore {
+        .user-profile-details{
+          ul{
+            li{
+              background: $bg-light-section;
+            }
+          }
+        }
+        .video-list {
+          .video-description{
+            background: $bg-light-section;
+            color: $color-light;
+            a{
+              color: $color-light;
+            }
+          }
+        }
+      }
+
+      .single-video{
+        .shared-info{
+          background: $bg-light-section;
+        }
+        .video-detail{
+          .buttons{
+            a{
+              background: $bg-light-section;
+              color: $color-light;
+            }
+          }
+        }
+        .video-comment-content{
+        .video-comment-send {
+          background: $bg-light;
+
+          .comment-box {
+            input[type="text"] {
+              background: $bg-light-section;
+              color: $color-light;
+            }
+
+            a {
+              background: $bg-light;
+              color: $color-light;
+            }
+          }
+        }
+        }
+      }
+
+      .video-upload{
+        .upload-content{
+          .dropzone{
+            background: $bg-light-section;
+            color:$color-light;
+          }
+          .file-upload{
+            button.upload-btn {
+              background: $bg-light-section;
+              i{
+                color:$color-light;
+              }
+              span{
+                color:$color-light;
+              }
+            }
+          }
+          .file-description{
+            i{
+              color: $color-light;
+            }
+            textarea{
+              background: $bg-light-section;
+              color: $color-light;
+            }
+          }
+          .file-select{
+            .select-content{
+              i{
+                color: $color-light;
+              }
+              select{
+                background: $bg-light-section;
+                color: $color-light;
+              }
+            }
+          }
+        }
+      }
+
+      .sidebar {
+        .populer-videos {
+          h3 {
+            border-bottom: 1px solid $bg-dark;
+          }
+        }
+      }
+    }
+
+    section.login{
+      .login-content{
+        background: $bg-light-section;
+        ul.nav-tabs{
+          background: $bg-light;
+          .nav-link.active{
+            background: $bg-light-section;
+            color: $color-light;
+          }
+        }
+        form{
+          .form-content{
+            .form-input{
+              color: $color-light;
+            }
+          }
+        }
+      }
+    }
+
+    section.mobile-bar {
+      background: $bg-light-section;
+
+      .shadow {
+        background: $bg-light;
+      }
+    }
+
+    .user-modal {
+      ul {
+        background: $bg-light-section;
+
+        li {
+          a {
+            i{
+              background: $bg-light;
+            }
+            &:hover {
+              background: $bg-light;
+            }
+          }
+        }
+      }
+    }
+
+    .gear-modal {
+      ul {
+        background: $bg-light-section;
+
+        li {
+          a {
+            &:hover {
+              background: $bg-light;
+            }
+          }
+        }
+      }
+    }
+    .info-modal {
+      ul {
+        background: $bg-light-section;
+
+        li {
+          a {
+            &:hover {
+              background: $bg-light;
+            }
+          }
+        }
+      }
+    }
+    .profile-modal {
+      ul {
+        background: $bg-light-section;
+
+        li {
+          a {
+            &:hover {
+              background: $bg-light;
+            }
+          }
+        }
+      }
+    }
+    .video-modal {
+      .modal-content{
+        .container-fluid {
+          background: $bg-light-section;
+          .video-popup-details{
+            .video-popup-scroll{
+              .video-comment-send{
+                background: $bg-light-section;
+                .comment-box{
+                  input[type="text"] {
+                    background: $bg-light;
+                    color:$color-light;
+                  }
+                  a{
+                    background: $bg-light-section;
+                    color:$color-light;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .notification-modal {
+      ul {
+        background: $bg-light-section;
+
+        li {
+          a {
+            &:hover {
+              background: $bg-light;
+            }
+          }
+        }
+      }
+    }
+
+    .avatar-modal,.cover-modal,.email-modal,.password-modal,.gift-detail-modal,.video-detail-modal {
+      .modal-content{
+        background: $bg-light-section;
+        .close{
+          color: $color-light;
+        }
+        .modal-body{
+          button.upload-btn{
+            background: $bg-light;
+            i{
+              color: $color-light;
+            }
+            span{
+              color: $color-light;
+            }
+          }
+          .form-control{
+            background:$bg-light;
+            color: $color-light;
+          }
+        }
+      }
+    }
+
+  }
+
+  &.dark {
+    background-color: $bg-dark;
+    color: $color-dark;
+
+    a {
+      color: $color-dark;
+    }
+
+    section.navbar {
+      background: $bg-dark-section;
+
+      .search-result-box{
+        .liveresult{
+          li{
+            background: $bg-dark-section;
+            color: $color-dark;
+            a{
+              color: $color-dark;
+            }
+            &:hover{
+              background: $bg-dark;
+            }
+          }
+        }
+      }
+
+      .search-bar {
+        background: $bg-dark;
+        input[type="text"] {
+          color: $color-dark;
+        }
+      }
+
+      #mobile-bar {
+        .mobile-with-search {
+          background: $bg-dark-section;
+          .search-bar {
+            background: $bg-dark-section;
+          }
+        }
+      }
+
+      .btn-home {
+        img {
+          mix-blend-mode: screen;
+        }
+      }
+    }
+
+    section.content {
+
+      .swipe-sidebar{
+        a.swipe-sidebar-btn{
+          background:$bg-dark;
+        }
+        .scroll-content{
+          background:$bg-dark-section;
+          #swipe-sidebar-search-box{
+            background:$bg-dark;
+            color:$color-dark;
+          }
+        }
+      }
+
+      .profile-header{
+        .user-detail{
+          background:$bg-dark-section;
+        }
+      }
+
+      .user-settings-sidebar{
+        background:$bg-dark-section;
+        nav{
+          a{
+            background:$bg-dark;
+            color: $color-dark;
+          }
+        }
+      }
+
+      .user-settings-content{
+        background:$bg-dark-section;
+        .user-profile-setting{
+          form {
+            .form-group {
+              i{
+                color: $color-dark;
+              }
+              .form-control{
+                background:$bg-dark;
+                color: $color-dark;
+              }
+            }
+          }
+        }
+      }
+
+      .owl-carousel {
+        .owl-nav {
+          button.owl-prev {
+            background-image: linear-gradient(to right, $bg-dark, transparent);
+          }
+
+          button.owl-next {
+            background-image: linear-gradient(to left, $bg-dark, transparent);
+          }
+        }
+      }
+
+      .sharing {
+        .video-list {
+          background: $bg-dark-section;
+        }
+      }
+
+      .explore {
+        .user-profile-details{
+          ul{
+            li{
+              background: $bg-dark-section;
+            }
+          }
+        }
+        .video-list {
+          .video-description{
+            background: $bg-dark-section;
+            color: $color-dark;
+            a{
+              color: $color-dark;
+            }
+          }
+        }
+      }
+
+      .single-video{
+        .shared-info{
+          background: $bg-dark-section;
+        }
+        .video-detail{
+          .buttons{
+            a{
+              background: $bg-dark-section;
+              color: $color-dark;
+            }
+          }
+        }
+        .video-comment-content{
+        .video-comment-send {
+          background: $bg-dark;
+
+          .comment-box {
+            input[type="text"] {
+              background: $bg-dark-section;
+              color: $color-dark;
+            }
+
+            a {
+              background: $bg-dark;
+              color: $color-dark;
+            }
+          }
+        }
+        }
+      }
+
+      .video-upload{
+        .upload-content{
+          .dropzone{
+            background: $bg-dark-section;
+            color:$color-dark;
+          }
+          .file-upload{
+            button.upload-btn {
+              background: $bg-dark-section;
+              i{
+                color:$color-dark;
+              }
+              span{
+                color:$color-dark;
+              }
+            }
+          }
+          .file-description{
+            i{
+              color: $color-dark;
+            }
+            textarea{
+              background: $bg-dark-section;
+              color: $color-dark;
+            }
+          }
+          .file-select{
+            .select-content{
+              i{
+                color: $color-dark;
+              }
+              select{
+                background: $bg-dark-section;
+                color: $color-dark;
+              }
+            }
+          }
+          .select2-container{
+            .select2-selection{
+              background: $bg-dark-section;
+              color: $color-dark;
+              &__rendered{
+                color: $color-dark;
+              }
+              &__arrow{
+                color: $color-dark;
+              }
+            }
+          }
+        }
+      }
+
+      .sidebar {
+        .populer-videos {
+          h3 {
+            border-bottom: 1px solid $bg-light;
+          }
+        }
+      }
+    }
+
+    section.login {
+      .login-content {
+        background: $bg-dark-section;
+        ul.nav-tabs{
+          background: $bg-dark;
+          .nav-link.active{
+            background: $bg-dark-section;
+            color: $color-dark;
+          }
+        }
+        form {
+          .form-content {
+            .form-input {
+              color: $color-dark;
+            }
+          }
+        }
+      }
+    }
+
+    section.mobile-bar {
+      background: $bg-dark-section;
+
+      .shadow {
+        background: $bg-dark;
+      }
+    }
+
+    .user-modal {
+      ul {
+        background: $bg-dark-section;
+
+        li {
+          a {
+            i{
+              background: $bg-dark;
+            }
+            &:hover {
+              background: $bg-dark;
+            }
+          }
+        }
+      }
+    }
+
+    .gear-modal {
+      ul {
+        background: $bg-dark-section;
+
+        li {
+          a {
+            &:hover {
+              background: $bg-dark;
+            }
+          }
+        }
+      }
+    }
+
+    .info-modal {
+      ul {
+        background: $bg-dark-section;
+
+        li {
+          a {
+            &:hover {
+              background: $bg-dark;
+            }
+          }
+        }
+      }
+    }
+
+    .profile-modal {
+      ul {
+        background: $bg-dark-section;
+
+        li {
+          a {
+            &:hover {
+              background: $bg-dark;
+            }
+          }
+        }
+      }
+    }
+
+
+    .video-modal {
+      .modal-content{
+        .container-fluid {
+          background: $bg-dark-section;
+          .video-popup-details{
+            .video-popup-scroll{
+              .video-comment-send{
+                background: $bg-dark-section;
+                .comment-box{
+                  input[type="text"] {
+                    background: $bg-dark;
+                    color:$color-dark;
+                  }
+                  a{
+                    background: $bg-dark-section;
+                    color:$color-dark;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .notification-modal {
+      ul {
+        background: $bg-dark-section;
+
+        li {
+          a {
+            &:hover {
+              background: $bg-dark;
+            }
+          }
+        }
+      }
+    }
+
+    .avatar-modal,.cover-modal,.email-modal,.password-modal,.gift-detail-modal,.video-detail-modal {
+      .modal-content{
+        background: $bg-dark-section;
+        .close{
+          color: $color-dark;
+        }
+        .modal-body{
+          button.upload-btn{
+            background: $bg-dark;
+            i{
+              color: $color-dark;
+            }
+            span{
+              color: $color-dark;
+            }
+          }
+          .form-control{
+            background:$bg-dark;
+            color: $color-dark;
+          }
+        }
+      }
+    }
+
+    .select2-container{
+      .select2-dropdown{
+        background-color: $bg-dark-section !important;
+        color: $color-dark;
+      }
+    }
+
+  }
+
+  .user-modal {
+    ul {
+      li {
+        #darklight {
+          button {
+            &.dark {
+              background: $bg-dark-section;
+            }
+
+            &.light {
+              background: $bg-light-section;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
