@@ -15,9 +15,7 @@ items.forEach((item,index) => {
 
 
 $("#darklight").find(":button").click(function (e) {
-    $.post(ajax_url + '/events',{'type': 'darklight'},function (sonuc) {
-
-    });
+    
     e.preventDefault();
 });
 
@@ -43,11 +41,8 @@ $(document).ready(function(){
         var inputVal = $(this).val();
         var resultDropdown = $("ul.liveresult");
         if(inputVal.length){
-            $.post(ajax_url + '/search', {'type':'search',term: inputVal}).done(function(data){
-                /* Gelen sonucu ekrana yazdırıyoruz. */
-                resultDropdown.html(data);
-                console.log(data);
-            });
+         
+            resultDropdown.html(data);
         }else{
             resultDropdown.empty();
         }
@@ -83,36 +78,26 @@ function sweetalert (title,text,icon,btnText){
 $(".save-btn").click(function () {
     var element = $(this);
     var id = element.parents().get(5).id;
-    $.post(ajax_url + '/save',{'type':'save','id':id},function (sonuc) {
-        if(sonuc === "ok"){
-            element.toggleClass("active");
-        }
-        else{
-            toastr.error('Videoyu kaydedebilmek için giriş yapmalısın!');
-        }
-    });
+    element.toggleClass("active");
 });
 
 
 $(".like-btn").click(function () {
     var element = $(this);
     var id = element.parents().get(5).id;
-    $.post(ajax_url + '/like',{'type':'like','id':id},function (sonuc) {
-        if(sonuc === "ok"){
-            element.toggleClass("active");
-            element.parents().get(5).children[2].children[2].firstElementChild.classList.toggle("active");
-            var likeCount = element.parents().get(5).children[2].children[2].firstElementChild.textContent;
-            if(element.parents().get(5).children[2].children[2].firstElementChild.className == "active"){
-                element.parents().get(5).children[2].children[2].firstElementChild.lastChild.textContent = parseInt(likeCount)+1;
-            }
-            else{
-                element.parents().get(5).children[2].children[2].firstElementChild.lastChild.textContent = parseInt(likeCount)-1;
-            }
-        }
-        else{
-            toastr.error('Videoyu beğenebilmek için giriş yapmalısın!');
-        }
-    });
+
+    
+    element.toggleClass("active");
+    element.parents().get(5).children[2].children[2].firstElementChild.classList.toggle("active");
+    var likeCount = element.parents().get(5).children[2].children[2].firstElementChild.textContent;
+    if(element.parents().get(5).children[2].children[2].firstElementChild.className == "active"){
+        element.parents().get(5).children[2].children[2].firstElementChild.lastChild.textContent = parseInt(likeCount)+1;
+    }
+    else{
+        element.parents().get(5).children[2].children[2].firstElementChild.lastChild.textContent = parseInt(likeCount)-1;
+    }
+    
+    
 });
 
 
@@ -120,20 +105,17 @@ $(".like-btn").click(function () {
 $(".video-like-btn").click(function () {
     var element = $(this);
     var id = element.get(0).id;
-    $.post(ajax_url + '/like',{'type':'like','id':id},function (sonuc) {
-        if (sonuc === "ok") {
-            var likeCount = element.get(0).textContent;
-            element.get(0).classList.toggle("active");
-            if(element.get(0).classList[1] == "active"){
-                element.get(0).lastChild.textContent = parseInt(likeCount)+1;
-            }
-            else{
-                element.get(0).lastChild.textContent = parseInt(likeCount)-1;
-            }
-        } else {
-            toastr.error('Videoyu beğenebilmek için giriş yapmalısın!');
-        }
-    });
+    
+    var likeCount = element.get(0).textContent;
+    element.get(0).classList.toggle("active");
+    if(element.get(0).classList[1] == "active"){
+        element.get(0).lastChild.textContent = parseInt(likeCount)+1;
+    }
+    else{
+        element.get(0).lastChild.textContent = parseInt(likeCount)-1;
+    }
+    
+    
 
 });
 
@@ -142,15 +124,11 @@ $(".add-comment").click(function () {
     var id = element.get(0).id;
     var comment = element.get(0).nextElementSibling.value;
     if(comment.length > 0){
-        $.post(ajax_url + '/comment',{'type':'comment','id':id,'comment':comment},function (sonuc) {
-            if(sonuc == "ok"){
-                toastr.success('Yorumunuz eklendi. İncelemeden sonra görünür olacaktır.');
-                element.get(0).nextElementSibling.value = "";
-            }
-            else{
-                toastr.error('Videoya yorum yapabilmek için giriş yapmalısın!');
-            }
-        });
+        
+        toastr.success('Yorumunuz eklendi. İncelemeden sonra görünür olacaktır.');
+        element.get(0).nextElementSibling.value = "";
+        
+        
     }
     else{
         toastr.error('Boş yorum gönderilemez!');
@@ -160,26 +138,26 @@ $(".add-comment").click(function () {
 
 var lastScrollTop = 0;
 $(".scroll-content").scroll(function(event){
-   var st = $(this).scrollTop();
-   if (st > lastScrollTop){
-        $('.mobile-bar').addClass('scroll-hide');
-   } else {
-        $('.mobile-bar').removeClass('scroll-hide');
-   }
-   lastScrollTop = st;
+ var st = $(this).scrollTop();
+ if (st > lastScrollTop){
+    $('.mobile-bar').addClass('scroll-hide');
+} else {
+    $('.mobile-bar').removeClass('scroll-hide');
+}
+lastScrollTop = st;
 });
 
 var lastScrollTop = 0;
 $(window).scroll(function(event){
-   var st = $(this).scrollTop();
-   if (st > lastScrollTop){
-        $('.mobile-bar').addClass('scroll-hide');
-   } else {
-        $('.mobile-bar').removeClass('scroll-hide');
-   }
-   lastScrollTop = st;
+ var st = $(this).scrollTop();
+ if (st > lastScrollTop){
+    $('.mobile-bar').addClass('scroll-hide');
+} else {
+    $('.mobile-bar').removeClass('scroll-hide');
+}
+lastScrollTop = st;
 });
- 
+
 
 
 
@@ -197,9 +175,9 @@ $(window).scroll(function(event){
 
 $(document).ready(function(){
     $('#video-popup').on('hide.bs.modal', () => {
-    var myPlayer = videojs('autoplay');
-    myPlayer.pause();
-});
+        var myPlayer = videojs('autoplay');
+        myPlayer.pause();
+    });
 })
 
 
@@ -231,5 +209,5 @@ $(document).ready(function(){
 
 function  notificationReset() {
     $('.notification-dot').hide();
-    $.post(ajax_url + '/events',{'type':'notification-reset'},function (sonuc) {});
+    
 }
